@@ -4,10 +4,9 @@
 #include <algorithm>
 using namespace std;
 
- void bfs(vector<int> adj[],int src,int v)
- {
-    vector<bool>isVisited (v+1,false);
-      
+void bfs(vector<int> adj[], int src, vector<bool> &isVisited)
+{
+    
       queue<int> q;
 
       q.push(src);
@@ -35,12 +34,28 @@ using namespace std;
      }
  }
 
+ void discreteBFS(vector<int> adj[], int v)
+ {
+     vector<bool> isVisited(v + 1, false);
 
-void addEdge(vector<int> adj[],int u,int v)
-{
-  
-    adj[v].push_back(u); //as it is a undirected graph
-    adj[u].push_back(v);
+     int i = 0;
+
+     while (i < v)
+     {
+         if (!isVisited[i])
+         {
+             bfs(adj, i, isVisited);
+         }
+         i++;
+     }
+ }
+
+     void addEdge(vector<int> adj[], int u, int v)
+ {
+
+     adj[v].push_back(u); // as it is a undirected graph
+     adj[u].push_back(v);
+    //  cout << "adding\n";
     
 }
 
@@ -67,28 +82,33 @@ int main(){
 
 
 
-    //aray of vectors
-    vector<int> v[5];
+    //array of vectors
+    vector<int> v[6];
 
-    addEdge(v,0,1);
+// cout << "jai mata di";
+    addEdge(v,0,5);
 
-    addEdge(v,0,2);
-    addEdge(v,1,2);
+    addEdge(v,0,4);
 
-    addEdge(v,1,3);
-    addEdge(v,2,3);
-    addEdge(v,3,4);
-    addEdge(v,2,4);
+    addEdge(v,4,3);
+    addEdge(v,5,3);
 
+    //discontinours grapkh
+    addEdge(v,2,1);
+    addEdge(v,2,6);
+    addEdge(v,1,6);
 
-    bfs(v,0,4);
+    // cout << "my graph";
 
+    // for(auto i : v[0])
+    // {
+    //     cout << " " << i++;
+    // }
 
-    // p(arr);
+    // cout << "end\n";
 
-    // cout << arr[1];
-
-    // printArr(v);
+    discreteBFS(v,6);
+    
 
         return 0;
 }
