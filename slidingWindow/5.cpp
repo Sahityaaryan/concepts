@@ -3,73 +3,57 @@
 #include <vector>
 #include <algorithm>
 using namespace std;
-
-bool isPalin(string s, int l, int r)
-{
-    bool flag = true;
-    int i = 0;
-    while (i <= ((r - l + 1) / 2))
-    {
-        if (s[l + i] != s[r - i])
-        {
-            flag = false;
-            break;
-        }
-        i++;
-    }
-    return flag;
-}
-
-string longestPalindrome(string s)
-{
-
-    int leader = 0, width = 0;
-    int lagger = 0;
-    int hsh[26];
-    fill(hsh,hsh + 26,-1);
-    // vector<pair<int,string>>
-    vector<pair<int, int>> ans(1001);
-    int n = s.size();
-
-    // cout << hsh[2] << '\n';
-
-    while (leader < n)
-    {
-        if (hsh[leader] >= lagger)
-        {
-            if (isPalin(s, hsh[leader], lagger))
-            {
-                width = max(width, leader - lagger + 1);
-                ans[width] = pair<int, int>(leader, lagger);
+    bool isPalin(string s, int l, int r) {
+        bool flag = true;
+        int i = 0;
+        while (i <= ((r - l + 1) / 2)) {
+            if (s[l + i] != s[r - i]) {
+                flag = false;
+                break;
             }
-            lagger = hsh[leader] + 1;
+            i++;
         }
-        hsh[leader] = leader;
-        leader++;
+        return flag;
     }
 
-    int l = ans[width].first;
-    int r = ans[width].second;
+    string longestPalindrome(string s) {
 
-    cout <<"width: "<< width << '\n';
-    string sl = "";
+        int leader = 0, width = 0;
+        int lagger = 0;
+        int hsh[26];
+        fill(hsh, hsh + 26, -1);
 
-    cout << "l: "<<l << "r: "<< r << '\n';
+        vector<pair<int, int>> ans(1001);
+        int n = s.size();
 
-    while (l <= r)
-    {
-        // cout << ": "<< s[l];
-        sl += s[l++];
+
+        while (leader < n) {
+            if (hsh[s[leader] - 'a'] >= lagger) {
+                if (isPalin(s, lagger,leader)) 
+                {
+                    width = max(width, leader - lagger + 1);
+                    ans[width] = pair<int, int>(leader, lagger);
+                }
+                lagger++;
+            }
+            hsh[s[leader] - 'a'] = leader;
+            leader++;
+        }
+
+        int l = ans[width].first;
+        int r = ans[width].second;
+
+        // cout << l << ' ' << r << endl;
+
+        return s.substr(l, width);
     }
-
-    return sl;
-}
-
 int main(){
 
-    string s ="abbba";
+    string s ="abbcba";
 
-    cout << "\nans: "<< longestPalindrome(s);
+    // cout << "\nans: "<< longestPalindrome(s);
+
+    cout << isPalin(s, 0, s.length()-1);
     
     cout << endl;
     return 0;
