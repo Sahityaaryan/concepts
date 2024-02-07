@@ -5,7 +5,7 @@
 #include <algorithm>
 using namespace std;
 
-//##########     New things learnt ###############//
+//##########  New things learnt ###############//
 
 //* jumping window
 
@@ -71,11 +71,6 @@ int lengthOfLongestSubstring(string s)
         string s = "b";
 
         cout << "ans: " << lengthOfLongestSubstring(s);
-
-        // char str = ' '; 
-
-        // cout << (int) str;
-
         cout << endl;
         return 0;
     }
