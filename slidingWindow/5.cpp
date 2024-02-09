@@ -3,6 +3,7 @@
 #include <vector>
 #include <algorithm>
 using namespace std;
+
     bool isPalin(string s, int l, int r) {
         bool flag = true;
         int i = 0;
