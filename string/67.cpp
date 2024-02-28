@@ -18,7 +18,7 @@ string addBinary(string a, string b) {
       carry /= 2;
     }
 
-    reverse(ans.begin(), ans.end());
+    reverse(ans.begin(), ans.end());ex
     return ans;
   }
 
