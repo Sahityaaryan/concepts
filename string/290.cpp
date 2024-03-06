@@ -23,7 +23,7 @@ vector<string> trim(string s)
         return str;
     }
 
-    bool wordPattern(string pattern, string s) {
+    // bool wordPattern(string pattern, string s) {
 
         int i =0;
         vector<string> str = trim(s);
