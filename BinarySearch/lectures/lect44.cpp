@@ -9,7 +9,12 @@ using namespace std;
  * ITERATIONS
  *   time: O(sqrt(x))
  *   space: O(1)
+ *
+ * Iterations: (what i think)
+ * time: O(log(n))
  * 
+ * 
+ *  
  * explaination of the above TC. is that kisi particular size se 1 pe jaane mein kitan baar half ya division 
  * karna padega
  * 
