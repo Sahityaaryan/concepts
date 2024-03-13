@@ -131,7 +131,7 @@ int sir(vector<int> input,int l,int r)
 
     while(l <= r)
     {
-          int mid = l + (r-l)/2;
+        int mid = l + (r-l)/2;
 
    if(input[mid] < input[mid+1] && input[mid] < input[mid-1])
    {
