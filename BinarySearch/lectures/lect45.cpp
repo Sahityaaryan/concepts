@@ -27,55 +27,29 @@ int bs(vector<int> v,int l,int r, int t)
     return bs(v,mid+1,r,t);
 }
 
-int lowerBound(vector<int> v,int l,int r, int t)
-{
-        int first = bs(v,l,r,t);
 
-        if(first==-1) return first;
 
-        int second = lowerBound(v,l,first-1,t);
 
-        return (second == -1) ? first:second;
-    
+int lowerBound(vector<int> arr, int n, int x) {
+    int low = 0, high = n - 1;
+    int ans = n;
+
+    while (low <= high) {
+        int mid = (low + high) / 2;
+        // maybe an answer
+        if (arr[mid] >= x) {
+            ans = mid;
+            //look for smaller index on the left
+            high = mid - 1;
+        }
+        else {
+            low = mid + 1; // look on the right
+        }
+    }
+    return ans;
 }
 
-int lowerBoundLoop(vector<int> v,int t){
-	int l = 0, r = v.size()-1;
-	
-	while(l <= r)
-	{
-		int mid = l + (r-l)/2;
 
-		if(v[mid]==t)
-		{
-			r = mid-1;	
-		} else if(v[mid]>t)
-		{
-			r = mid-1;
-		} else {
-			l = mid+1;
-		}
-
-	}
-
-    if(l==v.size()||r < 0) return -1;
-
-
-	return l;
-
-}
-
-int upperBound(vector<int> v,int l,int r, int t)
-{
-        int first = bs(v,l,r,t);
-
-        if(first==-1) return first;
-
-        int second = upperBound(v,first+1,r,t);
-
-        return (second == -1) ? first:second;
-    
-}
 
 /**upper bound and lower bound end*/
 
