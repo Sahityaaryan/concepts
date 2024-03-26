@@ -22,9 +22,6 @@
 - it is caluclated as (10^10) + 7
 
 
-## preview
-    <video src="../../works/Vsextensions/Exet/public/videos/recording.mp4" controls height="300px"></video>
-
 
 ### POTD solutions repo
 
