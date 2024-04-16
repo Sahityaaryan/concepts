@@ -41,8 +41,3 @@ ListNode *oddEvenList(ListNode *head)
     return oddHead;
 }
 
-int main(){
-    
-    cout << endl;
-    return 0;
-}
