@@ -40,3 +40,8 @@ ListNode *oddEvenList(ListNode *head)
 
     return oddHead;
 }
+
+int main(){
+
+    return 0;
+}
