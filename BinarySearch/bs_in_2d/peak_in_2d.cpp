@@ -1,12 +1,12 @@
 #include<bits/stdc++.h>
 using namespace std;
 
+//  checker : checks that whether it is actually a peak or not? means
+    //  surrounding element are lower than it or not
     bool checker(vector<vector<int>>& mat, int row, int col) {
 
         int m = mat.size(), n = mat[0].size();
         int peakElement = mat[row][col];
-
-        cout << "peakElement: "<< peakElement << " row " << row << endl;
 
         //  edge cases:
 
@@ -115,42 +115,38 @@ using namespace std;
         return false;
     }
 
-    //  The problem is in the edge cases handling of the col of Peak Element
-    //  *********************** Problem
 
-    // searchPeakElementIn1dArray : find the peak element in the given array
 
-    int colOfPeakElement(vector<int> arr) {
+     int colOfPeakElement(vector<int> arr) { // getting the maximum element of the whole array due to case no. 52
+        int i = 0,n = arr.size(), maxi = INT_MIN,col=0;
 
-        int n = arr.size();
-        int mid, lo = 0,
-                 hi = n - 1; // the peak element will always be in this range
+        while(i < n){
 
-      while (lo <= hi) {
-            mid = lo + (hi - lo) / 2;
-
-            if(mid == n-1) return mid;
-
-            if(arr[mid] < arr[mid+1]){
-                lo = mid + 1;
-            } else {
-                hi = mid -1;
+            if(maxi < arr[i]){
+                maxi = arr[i];
+                col = i;
             }
+            i++;
         }
-        return lo;
-    }
-    vector<int> findPeakGrid(vector<vector<int>>& mat) {
+        return col;
+     }
 
+    vector<int> findPeakGrid(vector<vector<int>>& mat) {
         // the answer is whosoever fullfills the checker condtion will be our
         // answer
 
         int i = 0, currentPeakCol;
+        int m = mat.size();
 
         while (i < mat.size()) {
 
             currentPeakCol = colOfPeakElement(mat[i]);
 
-            if (checker(mat, i, currentPeakCol)) {
+            if(m==1){ // this is the case to handle an edge case when we have only single row then the largest element of the row is the answer
+                return {i,currentPeakCol};
+            }
+
+            if (checker(mat, i, currentPeakCol) && m>1) { 
                 return {i, currentPeakCol};
             }
             i++;
@@ -181,44 +177,3 @@ int main()
 
 
 
-    // int findPeakElement(vector<int>& nums) {
-
-    //     int n = nums.size() , lo  =0, hi = n-1;
-    //     if (n==1) return 0;
-    //     while(lo <= hi){
-
-    //         int mid = lo + (hi-lo)/2;
-    //         if(mid==n-1) return mid; // reason becasue mid +1 will give overflow and my code will handle the lower cases 
-    //         if(nums{mid] < nums{mid+1]) {
-    //             lo = mid + 1;
-    //         } else {
-    //             hi = mid - 1;
-    //         }
-    //     }
-    //     return lo;
-    // }
-
-
-    // int colOfPeakElement(vector<int> arr) {
-    //     int n = arr.size();
-    //     int mid, lo = 0,
-    //              hi = n - 1; // the peak element will always be in this range
-
-    //     while (lo <= hi) {
-    //         mid = lo + (hi - lo) / 2;
-
-    //         if (mid == 0 && arr[mid] > arr[mid + 1]) {
-    //             return mid;
-    //         } else if (mid == n - 1 && arr[mid] > arr[mid - 1]) {
-    //             return mid;
-    //         } else if (mid > 0 && mid < n - 1 && arr[mid] > arr[mid - 1] &&
-    //                 arr[mid] > arr[mid + 1]) {
-    //             return mid;
-    //         } else if (mid > 0 && arr[mid] < arr[mid - 1]) {
-    //             hi = mid - 1;
-    //         } else {
-    //             lo = mid + 1;
-    //         }
-    //     }
-    //     return -1;
-    // }
