@@ -1,12 +1,15 @@
 #include<bits/stdc++.h>
 using namespace std;
 
+// this will take a long time to fix things on the place
+
 int median(vector<vector<int>> &matrix, int m, int n) {
     int ps = (m*n)/2, midRow,midCol;
     int lo = 1,hi = ps,mid,mid1,mid2;
     int rowPosit1,rowPosit2,rowPosit3,rowPosit4;
     int colPosit1,colPosit2,colPosit3,colPosit4;
     int leftUpper,leftLower,rightUpper,rightLower;
+    int mini1,mini2;
 
     midRow = ps/m,midCol = ps%n-1;
 
@@ -71,16 +74,42 @@ int median(vector<vector<int>> &matrix, int m, int n) {
             i++;
         }
 
-        // continue from here
+        // stiching
+
+        rightUpper = matrix[rowPosit2][colPosit2];
+
+            
+
+        i = rowPosit3+1;
+
+        while(i <= midRow){
+            rightUpper = min(rightUpper,matrix[i][0]);
+            i++;
+        }
+
+        rightLower = matrix[rowPosit4][colPosit4];
+
+        i = rowPosit4 == m-1 ? m-1:rowPosit4+1;
+
+        while(i < m){
+            rightLower = min(rightLower,matrix[i][0]);
+            i++;
+        }
 
 
+        if(rightUpper < leftLower && rightLower < leftUpper){
+            return min(rightLower,rightUpper);
+        } 
 
-
-
-
+        if(rightUpper > leftLower ){
+            hi = mid-1;
+        } else {
+            lo = mid+1;
+        }
 
     }
 
+    return -1;        
 
 }
 
