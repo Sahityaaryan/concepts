@@ -64,13 +64,3 @@ int median(vector<vector<int>> &matrix, int R, int C)
     return lo;
 }
 
-int main()
-{
-
-    vector<vector<int>> v = {{2, 3, 5}, {2, 3, 4}, {1, 7, 9}};
-
-    cout << "answer: " << median(v, v.size(), v[0].size());
-
-    cout << endl;
-    return 0;
-}
