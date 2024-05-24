@@ -1,3 +1,6 @@
+
+// knuth-morris-pratt: algorithm
+
 #include<bits/stdc++.h>
 using namespace std;
 
@@ -16,22 +19,18 @@ int strStr(string haystack, string needle) {
     // formation of longest prefix and suffix array
 
     while(i < needle.length()) {
-        if(needle[i] == needle[prevLps]){ // if suffix matches prefix then we will increase the put the prevLps+1 in the array which simply means that (prevLps+1) suffix matches with (prevLps+1) suffix 
-            lps[i] = prevLps+1; 
+        if(needle[i] == needle[prevLps]){ // if suffix matches prefix then we will increase the put the prevLps+1 in the array which simply means that (prevLps+1) suffix matches with (prevLps+1) prefix 
             prevLps++;
+            lps[i] = prevLps; 
             i++;
         } else if(prevLps == 0){ // It is for the case wheen we the suffix is not matching with even the first prefix
             lps[i] = 0;
             i++;
-        } else { // here we by this we are sending the prevLps back to the previous matching prefix 
-
-
-
-
-        
+        } else { // it is saying to the current char that you couldn't be matched with the current char so just try to start matching with the *prefix* of the previous char
             prevLps = lps[prevLps-1];
         }
     }
+
 
     i = 0; // ptr for haystack
     j = 0; // ptr for needle
@@ -66,7 +65,7 @@ int strStr(string haystack, string needle) {
 
 int main()
 {
-    string h = "sadbutsad",n = "sad";
+    string h = "sadbutsad",n = "ababaca";
 
     cout << strStr(h,n);
 
