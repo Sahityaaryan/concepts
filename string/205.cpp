@@ -21,7 +21,14 @@ void normalise(string &s){
     }
 }
 
-bool isoMorphic
+bool isoIsoMorphic2(string s,string t){
+
+    if(s.length()!= t.length()) return false;
+
+    normalise(s);
+    normalise(t);
+    return s==t;
+}
 
    bool isIsomorphic(string s, string t) {
         
