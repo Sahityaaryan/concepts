@@ -1,110 +1,60 @@
 #include<bits/stdc++.h>
 using namespace std;
 
-int countUniqueElements(string s){
-    vector<int> v(26,0);
-    // fill(v,v+s.len)
-    int i = 0,numberOfUniqueElements = 0;
-
-    while(i < s.length()){
-        if(!(v[s[i]-'a'])){
-            v[s[i]-'a']++;
-            numberOfUniqueElements++;
+long long int calcCount(string s,int k){
+          int lagger = 0;
+        int leader = 0 ;
+        int n = s.length() ; 
+        // int[] charFreq = new int[26] ; 
+        vector<int> charFreq(26,0);
+        int dist_count = 0 ;
+        long long int ans = 0 ;
+        while(leader<n){
+            charFreq[s[leader]-'a']++;
+            if(charFreq[s[leader]-'a']==1){ //Distinct Character
+                dist_count++;
+            }
+            
+            //Decreasing Window Size 
+            while(dist_count>k){
+                charFreq[s[lagger]-'a']--;
+                if(charFreq[s[lagger]-'a']==0){
+                    dist_count--;
+                }
+                lagger++;
+            }
+            ans+=(leader-lagger+1) ; 
+            leader++;
+            cout << "leader-lagger+1: " << leader-lagger+1 << endl;
         }
-        i++;
-    }
-
-    return numberOfUniqueElements;
+        return ans ;
 }
 
-void  generateSubString(string s, int charCount, vector<string> &ans){
-    if(charCount == s.length()+1){
-        return;
-    }
+ long long int substrCount(string s, int k ){
+    long long int numberOfKunique = calcCount(s,k);
+    long long int numberOfKunique2 = calcCount(s,k-1);
+        // long long int numberOfKunique2 = 0;
 
-    int i = 0;
-
-    while(i < s.length()-charCount + 1){
-        string temp = s.substr(i,charCount);
-        ans.push_back(temp);
-        i++;
-    }
-
-    return generateSubString(s,charCount+1,ans);
+        // cout << "number of unique k " << numberOfKunique << " unique k-1: " << numberOfKunique2 << endl;
+        return numberOfKunique - numberOfKunique2;
 }
 
-
-void generateStrings(string str, int start, vector<string>& result) {
-    if (start == str.length()) {
-        result.push_back(str);
-        return;
-    }
-
-    for (int i = start; i < str.length(); i++) {
-        swap(str[start], str[i]);
-        generateStrings(str, start + 1, result);
-        swap(str[start], str[i]); // backtrack
-    }
-}
-
-
-int subStrCount2(string s,int k){
-   int leader = 0,lagger = 0,count = 0;
-    unordered_map<char,int> mp;
-    int numberOfUnqiueElements = 0;
-
-    fill(arr,arr+26,0);
-
-    int i = 0,count = 0;
-
-    while(i < s.length()){
-        if(!arr[s[i]-'a']){
-            count++;
-        }
-        arr[s[i++]-'a']++;
-    }
-
-    return count;
-}
-
-vector<string> substrings(string s,int k){ // not a substring
-
-
-    vector<string> ans;
-
-    int start = 0, end = 1,i = 0,count=0;
-    string subString;
-
-    while(end < s.length()){
-        subString = s.substr(start,end-start+1);
-        count = numberOfDistinctChars(subString);    
-
-        if(!(count-k)){
-            ans.push_back(subString);
-        } 
-        end++;   
-    }
-
-    while(start < end-1){
-        subString = s.substr(start,end-start+1);
-        count = numberOfDistinctChars(subString);    
-
-        if(!(count-k)){
-            ans.push_back(subString);
-        } 
-        start++;   
-    }
-
-    return ans;
-}
 
 int main()
 {
+    string s = "ecbaddce";
+    int k = 3;
+    s = "aba";
+    k = 2;
 
-    string str = "sanu";
-    int k = 2;
 
 
+    // s = "aacaebceaac";
+    // k = 4;
+    // cout << "ans: " << subStrCount3(s,k);
+    cout << "ans: " << substrCount(s,k);
+
+    
 
     cout << endl;
     return 0;
