@@ -1,6 +1,7 @@
 #include<bits/stdc++.h>
 using namespace std;
 
+
     string trimString(string s){
 
         int start = 0, i = 0, n = s.length();

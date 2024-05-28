@@ -1,9 +1,57 @@
 #include<bits/stdc++.h>
 using namespace std;
 
-int numberOfDistinctChars(string s){ // it is not seeming more efficient than the map but still map is a graph so may it take time to 
-// implement a graph but implementing an array won't take time but yes it will take some fixed space
-    char arr[26];
+int countUniqueElements(string s){
+    vector<int> v(26,0);
+    // fill(v,v+s.len)
+    int i = 0,numberOfUniqueElements = 0;
+
+    while(i < s.length()){
+        if(!(v[s[i]-'a'])){
+            v[s[i]-'a']++;
+            numberOfUniqueElements++;
+        }
+        i++;
+    }
+
+    return numberOfUniqueElements;
+}
+
+void  generateSubString(string s, int charCount, vector<string> &ans){
+    if(charCount == s.length()+1){
+        return;
+    }
+
+    int i = 0;
+
+    while(i < s.length()-charCount + 1){
+        string temp = s.substr(i,charCount);
+        ans.push_back(temp);
+        i++;
+    }
+
+    return generateSubString(s,charCount+1,ans);
+}
+
+
+void generateStrings(string str, int start, vector<string>& result) {
+    if (start == str.length()) {
+        result.push_back(str);
+        return;
+    }
+
+    for (int i = start; i < str.length(); i++) {
+        swap(str[start], str[i]);
+        generateStrings(str, start + 1, result);
+        swap(str[start], str[i]); // backtrack
+    }
+}
+
+
+int subStrCount2(string s,int k){
+   int leader = 0,lagger = 0,count = 0;
+    unordered_map<char,int> mp;
+    int numberOfUnqiueElements = 0;
 
     fill(arr,arr+26,0);
 
