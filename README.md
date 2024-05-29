@@ -1,15 +1,6 @@
+# Introduction
 
-
-## Roadmap for DSA
-
-### FEB
-
-1. Array
-2. 2d Array
-3. String
-4. Sorting (bubble,insertion)
-5. Recursion
-6. MergeSort, QuickSort , 
+This repository contains the algorithms I found and question which I solve on coding platforms.
 
 ## Concepts
 
