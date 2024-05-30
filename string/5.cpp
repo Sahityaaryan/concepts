@@ -1,6 +1,7 @@
 #include <bits/stdc++.h>
 using namespace std;
-bool isPalin(string s, int l, int r){
+bool isPalin(string s, int l, int r)
+{
     bool flag = true;
     int i = 0;
     while (i <= ((r - l + 1) / 2))
@@ -15,13 +16,15 @@ bool isPalin(string s, int l, int r){
     return flag;
 }
 
-string longestPalindrome(string s)
+string longestPalindrome1(string s)
 {
-    if(!(s.length()-1)){
+    if (!(s.length() - 1))
+    {
         return s;
     }
 
-    if(isPalin(s,0,s.length()-1)){
+    if (isPalin(s, 0, s.length() - 1))
+    {
         return s;
     }
 
@@ -31,9 +34,11 @@ string longestPalindrome(string s)
     vector<int> ans(1001);
     int n = s.length();
 
-    while (lagger < n){
+    while (lagger < n)
+    {
 
-        if(leader == n){
+        if (leader == n)
+        {
             lagger++;
             leader = lagger;
         }
@@ -44,9 +49,10 @@ string longestPalindrome(string s)
             {
                 // cout << "lagger: "<< lagger  << " leader: " << leader << endl;
 
-                if(width < leader-lagger+1){
-                width =  leader - lagger + 1;
-                ans[width] = lagger;
+                if (width < leader - lagger + 1)
+                {
+                    width = leader - lagger + 1;
+                    ans[width] = lagger;
                 }
             }
 
@@ -55,24 +61,52 @@ string longestPalindrome(string s)
         }
         leader++;
     }
- 
 
-    if(!ans[width] && !width){
-        return s.substr(0,1);
+    if (!ans[width] && !width)
+    {
+        return s.substr(0, 1);
     }
-    
+
     // cout << "width: " << width  << "lagger: " << ans[width]<< endl;
     return s.substr(ans[width], width);
 }
 
+
+vector<int> manacher_odd(string s) {
+    int n = s.size();
+    s = "$" + s + "^";
+    vector<int> p(n + 2); // it is the vector containing the d^odd total numbers of odd length palindrome
+    int l = 1, r = 1;
+    for(int i = 1; i <= n; i++) {
+        p[i] = max(0, min(r - i, p[l + (r - i)])); // if i > r then automatically d^odd will be intialized to zero
+        while(s[i - p[i]] == s[i + p[i]]) {
+            p[i]++;
+        }
+        if(i + p[i] > r) {
+            l = i - p[i], r = i + p[i];
+        }
+    }
+    return vector<int>(begin(p) + 1, end(p) - 1);
+}
+
+
+
 int main()
 {
-    string s = "cbbd";
+    string s = "cbbd"; 
+    s = "ababab";
     // cout << longestPalindrome(s) << endl;
     // cout << endl;
-    s = "babad";
-    s = "aacabdkacaa";
-    cout << longestPalindrome(s) << endl;
+    // s = "babad";
+    // s = "aacabdkacaa";
+    // cout << longestPalindrome(s) << endl;
+    vector<int> v = manacher_odd(s);
+
+    cout << "\n Ans: \n";
+
+    for(auto ele:v){
+        cout << " " << ele ;
+    }
     // cout << endl;
 
     cout << endl;
