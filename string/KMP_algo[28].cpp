@@ -58,8 +58,6 @@ int strStr(string haystack, string needle) {
     // if none matched then return -1;
 
     return -1;
-
-    
 }
 
 

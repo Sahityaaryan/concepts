@@ -1,0 +1,216 @@
+#include<bits/stdc++.h>
+using namespace std;
+
+
+void printArray(vector<int>arr){
+    cout << "\narray:\n";
+    for(auto it:arr){
+        cout << it << ' ';
+    }
+    cout << endl;
+}
+
+
+
+
+
+
+
+
+// ! problem: it is not handling the first index case for ; "babad"; "
+
+
+
+
+
+
+
+
+string preProcessing(string s){
+    int i = 0;
+    string ans = "";
+
+    while(i < s.length()){
+        ans  += '#';
+        ans += s[i];
+        i++;
+    }
+    ans += '#';
+    return ans;
+}
+
+string longestPalindrome(string s){
+
+    string prevString = s;
+
+
+    int lengthOfLongestSubstring = 0, startingIndexOfLongestSubstring =1, i = 1,l = 1, r=1;;
+
+    s = preProcessing(s);
+
+    // cout << "preprocess: " << s << endl;
+
+    int n = s.length();
+    vector<int> p(n,0);
+    
+    while(i < n-1){
+        // cout << "chose: " << s[i] << endl;
+        // check if the has crossed the boundary of the longest palindrome found then initialize the p[i] to zero and if it is inside the
+        // boundary of the longest palindrome  then it is possible that if we take the center of that palindrome and will see that there
+        // are some subpalindromes within that longest palindrome so why to check for those position which we already know are 
+        // forming palindromes 
+        
+        p[i] = max(0,min(r-i,p[l+(r-i)])); // here l and r are the boundary pointers for the longest palindrome and l+r-i will give the mirror
+        //  position of i in the palindromic string
+
+        while( i-p[i] && s[i+p[i]] == s[i - p[i]]){
+            // cout << "target: " << s[i-p[i]]  << " index: " << i-p[i]<< endl;
+            p[i]++;
+        }
+            // cout << "i: "<< i << " p[i]: " << p[i] << endl;
+
+        if(i + p[i] > r){
+            l = i-p[i];
+            r = i + p[i];
+        }
+        
+        if(lengthOfLongestSubstring < (p[i]-1)){
+            lengthOfLongestSubstring = p[i] - 1;
+            startingIndexOfLongestSubstring = i;
+        }
+
+        i++;
+    }
+
+    // if even length palindromic string
+
+    int startingIndexInOriginalString;
+
+    if(lengthOfLongestSubstring % 2 == 0){
+        startingIndexOfLongestSubstring--;
+        startingIndexInOriginalString = (startingIndexOfLongestSubstring - 1)/2;
+        startingIndexInOriginalString = (startingIndexInOriginalString - (lengthOfLongestSubstring/2) + 1);   
+    } else {
+        startingIndexInOriginalString = (startingIndexOfLongestSubstring - 1)/2;
+        startingIndexInOriginalString = startingIndexInOriginalString - (lengthOfLongestSubstring/2);       
+    }
+
+    // cout << "index; " << startingIndexInOriginalString << " length: " << lengthOfLongestSubstring << endl;
+
+
+    return (prevString.substr(startingIndexInOriginalString, lengthOfLongestSubstring));  
+
+}
+int main()
+{
+    string s = "babad";
+    // s = "cbbd";
+    // s = "a";
+
+    cout << "ans: " << longestPalindrome(s) << endl;
+    
+    cout << endl;
+    return 0;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+// class Solution {
+
+//     string longestPalindrome(string s){
+//         int C=0,R=0;
+//         string original = s;
+//         s = preprocess(s);
+//         int n = s.length();
+//         vector<int> P(n,0);
+//         int maxCenter=0,maxLen=0;
+//         for(int i=0;i<n;i++)
+//         {
+//             int i_mirror = 2*C-i;
+// class Solution {
+
+//     string longestPalindrome(string s){
+//         int C=0,R=0;
+//         string original = s;
+//         s = preprocess(s);
+//         int n = s.length();
+//         vector<int> P(n,0);
+//         int maxCenter=0,maxLen=0;
+//         for(int i=0;i<n;i++)
+//         {
+//             int i_mirror = 2*C-i;
+//             if(i<R){
+//                P[i] = min(P[i_mirror],R-i);
+//             }
+//             int left = i-(P[i]+1);
+//             int right = i+(P[i]+1);
+//             while(left>=0 && right<n && s[left]==s[right]){
+//                 P[i]++;
+//                 left--;
+//                 right++;
+//             }
+//             if(i+P[i]>R)
+//             {
+//                 C=i;
+//                 R=i+P[i];
+//             }
+//             if (P[i] > maxLen) {
+//             maxLen = P[i];
+//             maxCenter = i;
+//         }
+//         }
+//         int start = (maxCenter - maxLen) / 2;
+//         return original.substr(start, maxLen);
+//     }
+
+//    string preprocess(string s){
+//       int n = s.length();
+//       for(int i=0;i<=2*n;i+=2)
+//       {
+//           s.insert(i,"#");
+//       }
+//       return s;
+//     }
+// };
+//             if(i<R){
+//                P[i] = min(P[i_mirror],R-i);
+//             }
+//             int left = i-(P[i]+1);
+//             int right = i+(P[i]+1);
+//             while(left>=0 && right<n && s[left]==s[right]){
+//                 P[i]++;
+//                 left--;
+//                 right++;
+//             }
+//             if(i+P[i]>R)
+//             {
+//                 C=i;
+//                 R=i+P[i];
+//             }
+//             if (P[i] > maxLen) {
+//             maxLen = P[i];
+//             maxCenter = i;
+//         }
+//         }
+//         int start = (maxCenter - maxLen) / 2;
+//         return original.substr(start, maxLen);
+//     }
+
+//    string preprocess(string s){
+//       int n = s.length();
+//       for(int i=0;i<=2*n;i+=2)
+//       {
+//           s.insert(i,"#");
+//       }
+//       return s;
+//     }
+// };
