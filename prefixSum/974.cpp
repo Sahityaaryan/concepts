@@ -47,9 +47,8 @@ expression to be divisible by k, R1 - R0 must also be divisible by k. This gives
     return count;
 }
 
-int main()
-{
-
+int main(){
+    
     vector<int> nums = {4, 5, 0, -2, -3, 1};
     int k = 5;
 
