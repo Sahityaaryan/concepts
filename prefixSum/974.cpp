@@ -26,7 +26,6 @@ expression to be divisible by k, R1 - R0 must also be divisible by k. This gives
    2. as (a + b) % 5 == a%5 + b%5, so in our case prefixMod is always a%5 just we have to put the new one (nums[i]) to modulo
 
    And we are adding k as well, just inorder to handle the negative integers
-
     */
 
     int n = nums.size();
