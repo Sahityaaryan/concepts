@@ -53,6 +53,6 @@ int main(){
 
     cout << "\n Ans: " << subarraysDivByK(nums, k) << endl;
 
-    // cout << endl;
+    cout << endl;
     return 0;
 }
