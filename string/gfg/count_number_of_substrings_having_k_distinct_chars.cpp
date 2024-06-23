@@ -48,13 +48,22 @@ int main()
     k = 2;
 
 
+unordered_map<char,int>mp;
+
+    cout << mp.size() << endl;
+
+    mp['r']++;
+    mp['s']++;
+
+    cout << mp.size() << endl;
+
+    cout << mp.size() << endl;
 
     // s = "aacaebceaac";
     // k = 4;
     // cout << "ans: " << subStrCount3(s,k);
-    cout << "ans: " << substrCount(s,k);
+    // cout << "ans: " << substrCount(s,k);
 
-    
 
     cout << endl;
     return 0;
