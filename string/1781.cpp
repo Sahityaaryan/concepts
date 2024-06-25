@@ -1,44 +1,43 @@
 #include <bits/stdc++.h>
 using namespace std;
 
-int calculateBeauty(string s, int start, int end)
-{
-
-    unordered_map<char, int> mp;
-
-    int lo = INT_MAX, hi = INT_MIN;
-
-    while (start <= end){
-        mp[s[start++]]++;
+    int calculateBeauty(unordered_map<char, int> mp) {
+        int lo = INT_MAX, hi = INT_MIN;
+        for (auto it : mp) {
+            // cout << it.first << " " << it.second << endl;
+            if (it.second) {
+                lo = min(lo, it.second);
+                hi = max(hi, it.second);
+            }
+        }
+        if (hi == INT_MIN || lo == INT_MAX)
+            return 0;
+        return hi - lo;
     }
 
-    if (mp.size() == 1)
-        return 0;
+    // memoization : failed
+    int beautySum(string s) {
 
-    for (auto it : mp){
-        // cout << "second: " <<it.second << endl;
-        lo = min(lo, it.second);
-        hi = max(hi, it.second);
+        int i = 0, j = 0, lagger = 0, beauty = 0,hi,lo;
+
+        while(i < s.length()-1){
+            j = i;
+            lo = INT_MAX,hi = INT_MIN;
+            vector<int> freq(26,0);
+
+            while(j < s.length()){
+                freq[s[i]-'a']++;
+                hi = max(hi,freq[s[i]-'a']);
+                lo = min(lo, freq[s[i]-'a']);
+                beauty += (hi-lo);
+                j++;
+            }
+            i++;
+        }
+
+        return beauty;
     }
-
-    if(hi == INT_MIN || lo == INT_MAX) return 0;
-
-    // cout << "hi: " << hi  << " lo: " << lo << endl;
-
-    return hi - lo;
-}
-
-int beautySum(string s){
-    int lagger = 0, leader = 0, beauty, count = 0;
-
-    while(leader < s.length()){
-        
-    }
-    return count;
-}
-
- 
-
+    
 int main()
 {
     string s = "aba";
