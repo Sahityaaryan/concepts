@@ -1,7 +1,7 @@
 #include <bits/stdc++.h>
 using namespace std;
 
-    int calculateBeauty(unordered_map<char, int> mp) {
+     int calculateBeauty(unordered_map<char, int> mp) {
         int lo = INT_MAX, hi = INT_MIN;
         for (auto it : mp) {
             // cout << it.first << " " << it.second << endl;
@@ -18,59 +18,55 @@ using namespace std;
     // memoization : failed
     int beautySum(string s) {
 
-        int i = 0, j = 0, lagger = 0, beauty = 0,hi,lo;
+        int i = 0, j = 0, lagger = 0, beauty = 0,hi,lo,dist_count, count=0 , n =s.length();
 
-        while(i < s.length()-1){
+        while(i < n-1){
             j = i;
             lo = INT_MAX,hi = INT_MIN;
             vector<int> freq(26,0);
+            
+            dist_count = 0;
 
-            while(j < s.length()){
-                freq[s[i]-'a']++;
-                hi = max(hi,freq[s[i]-'a']);
-                lo = min(lo, freq[s[i]-'a']);
+            cout << "\nbreak\n";
+
+            while(j < n){
+
+                if(!freq[s[j]-'a']){
+                    dist_count++;
+                }
+
+                freq[s[j]-'a']++;
+
+                hi = max(hi,freq[s[j]-'a']);
+                lo = min(lo, freq[s[j]-'a']);
+
+                    // count++;
+                if(dist_count > 1){
                 beauty += (hi-lo);
+                    cout << "hi: " << hi << " lo: " << lo << " currChar: "<< s[j] <<" diff: "  << (hi-lo) << " beauty: "  << beauty <<   endl;
+                } 
                 j++;
             }
             i++;
         }
 
+        // cout << "\nTotalCount\t" << count << endl;
+
         return beauty;
     }
-    
+
 int main()
 {
-    string s = "aba";
+    string s = "aabcb";
 
+    s = "xzvfsppsjfbxdwkqe";
 
-    // vector<string> ans = substrings(s);
-    // cout << "len: " << ans.size() << endl;
+    cout << (s.length()*(s.length()+1))/2 << endl;
 
-    // s = "aabcb";
-    //  ans = substrings(s);
-    // cout << "len: " << ans.size() << endl;
+    // s = "aabc";
 
-    s = "aabcbaa";
-    //  ans = substrings(s);
-    // cout << "len: " << ans.size() << endl;
-    
-    // cout << "substrings: " << endl;
-
-
-    cout << " ans: " << beautySum(s) << endl;
-    // for (auto it : ans)
-    // {
-    //     cout << it << " ";
-    // }
-
-    // cout << "beauty: " << calculateBeauty("ab",0,1) << endl;
+    cout << "answer: " << beautySum(s) << endl;
 
     cout << endl;
     return 0;
 }
-
-// ab , abc,bc, cb  = 1
-
-// a aa a, ab ,abc , b , bc, c , cb, cba b ,ba, a , aa ,a
-
-
