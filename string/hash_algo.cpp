@@ -24,10 +24,7 @@ int A = 4, B = 97; // random variables which will help in hashing
             h[i] = (h[i-1]*A +(int)s[i]) % B;
             i++;
         }
-
-        // p[0] = 1
-        // p[k] = (p[k-1]*A) % B
-
+        
         i = 1;
         p[0] = 1;
 
