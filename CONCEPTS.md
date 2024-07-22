@@ -12,7 +12,40 @@
 3. *Use of &*
 - It is used to take the reference of the argument passed while calling the function. It helps to `call by reference`.
 
+4. *Whenver you are given to modulo the answer by (10e8 + 7)*
+- So it basically wants you to modulo it at the time of performing the operation and also typecast them to a higher datatype which can store such big numbers and after performing your operation alongwith the modula as well, typecast it back again to the previous datatype
 
+Eg: (int) (((long long)a * (long long)b) % (10e8 + 7))
+
+
+# LinkedList
+
+1. *Hare Tortoise* 
+- whenever you don't know about the size of something and you have to find a particular point then this can help you like if you want to be in the middle of LL then make your hare twice as faster as the tort so if the hare hits the NULL then the tort will be in the middle of the LL.
+
+2. *Recursion*
+- Whenever you want to start your operations from the last node and then follow back doing your operations to the head. 
+- It helps to do so without reversing the entire list.  
+
+
+
+# Recursion
+
+1. *Take Not Take* : best way to return a subarray or substring but with T.C : O(2^N) which may lead to the TLE.
+2. *When you have to return from recursion after first correct match and no need to search for other matches*: 
+    - Make the return type bool
+    - return true whenever you get the match.
+    - and wrap each function call in an if statement so that if it returns true then you just return from there as well and won't call more function calls
+3. *Unique subsequences*: Here you have to understand that if a character is repeating in further string then what could be the possible duplicate subsequence will it formed?
+    - For example take "saa" here what will be the duplicate subsequence and the answer is 2 or (the number of subsequence possible before the first occurence of the repeated character because that is the only common subseqeuences which will be formed exactly same with the second occurence of the repeated character)
+    - To prove my point let's delve futher the subsequence before first occurence of 'a' is only two ('', 's) now if you see the complete subsequences it will be like this {'', 's', 'a', 'a','sa', 'sa', 'aa', 'saa'} so the above two subsequence are repeating with both occurences (''-> 'a' , 'a' :::: 's'-> 'sa' , 'sa')
+
+
+# Patters for coding
+
+1. Just see the video by Sahil gaba of 8 patterns
+
+2. 
 
 ### POTD solutions repo
 
