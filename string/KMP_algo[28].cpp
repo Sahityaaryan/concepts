@@ -12,13 +12,15 @@ int strStr(string haystack, string needle) {
 
     vector<int>lps(needle.length(),0); // longest prefix suffix array
 
-    int prevLps =0, i = 1; // here we have initialized hte prevLps (prefix pointer) 
+    int prevLps = 0, i = 1; // here we have initialized hte prevLps (prefix pointer) 
     // and i as a suffix pointer
 
 
     // formation of longest prefix and suffix array
 
-    while(i < needle.length()) {
+        while(i < needle.length()){
+            
+
         if(needle[i] == needle[prevLps]){ // if suffix matches prefix then we will increase the put the prevLps+1 in the array which simply means that (prevLps+1) suffix matches with (prevLps+1) prefix 
             prevLps++;
             lps[i] = prevLps; 
@@ -32,6 +34,17 @@ int strStr(string haystack, string needle) {
     }
 
 
+    // cout << "needle: " << needle << endl;
+
+    // cout << prevLps << endl;
+
+    // for(auto ch:lps){
+    //     cout << ch << ' ' ;
+    // }
+
+    // cout << '\n';
+
+
     i = 0; // ptr for haystack
     j = 0; // ptr for needle
 
@@ -41,7 +54,6 @@ int strStr(string haystack, string needle) {
             i++;
             j++;
         }  else { 
-
             if(j == 0){
                 i++;
             } else {
@@ -53,10 +65,6 @@ int strStr(string haystack, string needle) {
             return i-needle.length();
         }
     }
-
-
-    // if none matched then return -1;
-
     return -1;
 }
 
@@ -64,9 +72,15 @@ int strStr(string haystack, string needle) {
 int main()
 {
     string h = "sadbutsad",n = "ababaca";
+    
+    // n = "but";s3w
+
+    // check(n);
 
     cout << strStr(h,n);
 
     cout << endl;
     return 0;
 }
+
+
