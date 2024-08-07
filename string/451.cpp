@@ -28,25 +28,37 @@ void test2(){
     // priority_queue<int, vector<int>, true>pq(true);
 }
 
-    string frequencySortByMapAndVector(string s) {
-        string ans;
-        map<char,int>mpp;
-        for(int i=0;i<s.size();i++){
-            mpp[s[i]]++;
+    static bool cmp(const pair<char,int>& p1, const pair<char,int>& p2){
+        return p1.second>p2.second;
+    }
+
+    string frequencySort(string s) {
+        int i = 0;
+        string ans = "";
+
+        vector<pair<char,int>> v(75, pair<char, int>('*',0));
+
+        for(char ch:s){ /// n
+            v[ch-'0'].first = ch;
+            v[ch-'0'].second++;
         }
-        vector<pair<char,int>>temp;
-        for(auto it:mpp){
-            temp.push_back(make_pair(it.first,it.second));
-        }
-        sort(temp.begin(), temp.end(), [](const auto& a, const auto& b) {
-        return a.second < b.second;});
-        for(auto it:temp){
-            for(int i=0;i<it.second;i++){
-                ans.insert(ans.begin()+0,it.first);
+
+        sort(v.begin(), v.end(), cmp); // n*log(n)
+ 
+        for(auto it:v){ // 75
+            i = 0;
+
+            while(i < it.second){
+                ans += it.first;
+                i++;
             }
+            
         }
+
         return ans;
 
+        // T.C : O(n + nlog(n)) = O(nlogn)
+        // S.C : O(1)
     }
     
 void test(){
