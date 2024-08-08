@@ -20,7 +20,7 @@ using namespace std;
         }
     }
 
-    int romanToInt(string s) {
+    int romanToInt1(string s) {
 
         stack<char> st;
 
@@ -55,9 +55,41 @@ using namespace std;
         
     }
 
+
+/***
+ * By recursion
+ * 
+*/
+
+    int sol(string s,int& topElementValue, int ind){
+
+        if(ind == s.length()){
+            return 0;
+        }
+        
+       int value = sol(s,topElementValue, ind+1);
+
+        int currentDigit = guessTheValue(s[ind]);
+
+        if(topElementValue > currentDigit){
+            return value - currentDigit;
+        }
+
+        topElementValue = currentDigit;
+
+        return value + currentDigit;
+    }
+
+    int romanToInt2(string s) {
+        int topElementValue = 0;
+      return sol(s,topElementValue,0);  
+
+    // T.C : O(N)
+    // S.C : O(N)
+    }
+
 int main()
 {
- 
     
     cout << endl;
     return 0;
