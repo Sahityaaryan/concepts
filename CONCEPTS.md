@@ -18,6 +18,17 @@
 Eg: (int) (((long long)a * (long long)b) % (10e8 + 7))
 
 
+# Bit Manipulation
+
+1. *what is lowerBound* => a number `ahead of` the maximum element which is `less than` the number whose lowerbound we are finding
+    *what is upperBound* => a number `before` the minimum element which is `greater than` the number whose upperbound we are finding
+
+2. *Ceil* => Ceil of x is the smallest element which is ` greater than or equal to x`. Ceil of x doesn’t exist if x is greater than greatest element of arr[].
+    *Floor* => Floor of x is the largest element which is `smaller than or equal to x`. Floor of x doesn’t exist if x is smaller than smallest element of arr[].
+
+  
+
+
 # LinkedList
 
 1. *Hare Tortoise* 
@@ -39,6 +50,16 @@ Eg: (int) (((long long)a * (long long)b) % (10e8 + 7))
 3. *Unique subsequences*: Here you have to understand that if a character is repeating in further string then what could be the possible duplicate subsequence will it formed?
     - For example take "saa" here what will be the duplicate subsequence and the answer is 2 or (the number of subsequence possible before the first occurence of the repeated character because that is the only common subseqeuences which will be formed exactly same with the second occurence of the repeated character)
     - To prove my point let's delve futher the subsequence before first occurence of 'a' is only two ('', 's) now if you see the complete subsequences it will be like this {'', 's', 'a', 'a','sa', 'sa', 'aa', 'saa'} so the above two subsequence are repeating with both occurences (''-> 'a' , 'a' :::: 's'-> 'sa' , 'sa')
+
+
+# Bit Manipulation
+
+1. 1s complement - just replace all the 1s from the 0s and vice versa from the bit form of the number 
+2. 2s complement - add one in the binary you got after 1s complement.
+3. n >> k == n/(2^k) 
+4. A negative number is stored in the form of 2s complement
+5. working of a not oeprator (written at the back of the copy)
+6. *check the ith bit* : num & (1 << i-1) or (num >> i-1) & 1
 
 
 # Patters for coding
