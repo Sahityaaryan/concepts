@@ -30,17 +30,14 @@ int main()
     vector<string> binaryStringArray;
     genBinary(5, binaryStringArray, ' ', "");
 
-    // cout << "\nBinary:\t";
+    cout << "\nBinary:\t";
 
-    // for(auto it: binaryStringArray){
-    //     cout << it << "\n";
-    // }
-
-
-    cout<< "size: " << binaryStringArray.size();
+    for(auto it: binaryStringArray){
+        cout << it << "\n";
+    }
 
     // T.C  <  O(2N-1) || O(N)
-    // S.C : O(1)
+    // S.C : O(N)
 
 
     cout << endl;

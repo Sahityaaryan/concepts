@@ -1,6 +1,8 @@
 #include<bits/stdc++.h>
 using namespace std;
 
+// here you just have to adjust by seeing the left and the right elments 
+
  int findPeakElement(vector<int>& nums) {
 
         int n = nums.size() , lo  =0, hi = n-1;

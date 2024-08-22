@@ -61,6 +61,10 @@ Eg: (int) (((long long)a * (long long)b) % (10e8 + 7))
 5. working of a not oeprator (written at the back of the copy)
 6. *check the ith bit* : num & (1 << i-1) or (num >> i-1) & 1
 
+# Math
+
+1. [Sieve of Eratosthenes](https://cp-algorithms.com/algebra/sieve-of-eratosthenes.html)
+
 
 # Patters for coding
 

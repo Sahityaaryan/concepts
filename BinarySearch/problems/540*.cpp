@@ -21,11 +21,11 @@ using namespace std;
         if(arr[hi] != arr[hi-1]) return arr[hi];
 
         while(lo <= hi){
-            int mid = lo + (hi-lo)/2;
+            int mid = lo + ((hi-lo) >> 1);
 
             if(arr[mid-1]==arr[mid]){
                 
-                if(mid % 2==0){
+                if(mid % 2 == 0){
                     hi = mid - 1;
                 } else {
                     lo = mid+1;

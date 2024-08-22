@@ -1,25 +1,26 @@
 #include<bits/stdc++.h>
 using namespace std;
 
-    ListNode* deleteMiddle(ListNode* head) {
+ ListNode* deleteMiddle(ListNode* head) {
 
         if(!head || !head->next){
-            return nullptr;
+            return nullptr; 
         }
 
-        ListNode* hare = head->next;
+        ListNode* hare = head;
         ListNode* tort = head;
+        ListNode* followerTort = nullptr;
 
-        while(hare->next && hare->next->next){
+        while(hare && hare->next){
+            followerTort = tort;
             tort = tort->next;
             hare = hare->next->next;
         } 
 
-        hare = tort->next->next;
-        delete tort->next;
-        tort->next = nullptr;
-
-        tort->next = hare;
+        followerTort->next = tort->next;
+        
+        delete tort;
+        tort = nullptr;
 
         return head;        
     }

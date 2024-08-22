@@ -20,7 +20,30 @@ int prior(char ch)
     }
 }
 
-string infixToPostfix(string s)
+
+string reverseInfix(string s){
+
+  string ans = "";
+
+  for(int i = s.length(); i >= 0; i--){
+
+    char ch = s[i];
+
+    if(ch == ')'){
+      ans += '(';
+
+    } else if(ch =='('){
+      ans += ')';
+    } else {
+      ans += ch;
+    }
+  }
+
+  return ans;
+
+}
+
+string infixToPostfix_without_removing_same_priority_operators(string s)
 {
 
     stack<char> st;
@@ -29,8 +52,9 @@ string infixToPostfix(string s)
 
     for (char ch : s)
     {
-        if(ch == ' ') continue;
-        
+
+      if(ch == ' ') continue;
+
         if (isdigit(ch) || isalpha(ch))
         {
             ans += ch;
@@ -52,7 +76,7 @@ string infixToPostfix(string s)
             }
             else
             {
-                    while (!st.empty() && prior(st.top()) >= prior(ch))
+                    while (!st.empty() && prior(st.top()) > prior(ch))
                     {
                         ans += st.top();
                         st.pop();
@@ -71,12 +95,24 @@ string infixToPostfix(string s)
     return ans;
 }
 
+
+string infixToPrefix(string s){
+    s = reverseInfix(s);
+    s = infixToPostfix_without_removing_same_priority_operators(s);
+    // cout << "converted: " << s << endl;
+    s = reverseInfix(s);
+
+    return s;
+}
+
 int main()
 {
-    string infix = "a+b*(c^d-e)^(f+g*h)-i";
-    string postfix = infixToPostfix(infix);
+    // string infix = "a+b*(c^d-e)^(f+g*h)-i";
+    string infix = "(A + B) * C- D + F";
+    string prefix = infixToPrefix(infix);
 
-    cout << "ans: " << postfix << endl;
+
+    cout << "\nans: " << prefix << endl;
 
     cout << endl;
     return 0;

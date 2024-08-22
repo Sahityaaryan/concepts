@@ -3,7 +3,7 @@ using namespace std;
 
 void recur(int n, vector<string>& ans, string s, int open, int close){
 
-        if(open > n || close > n){
+        if(open > n || close > n || open < close){
             return;
         }
 
@@ -12,13 +12,10 @@ void recur(int n, vector<string>& ans, string s, int open, int close){
         return;
     }
 
-    if(open < close){
-        return;
-    }
-
     recur(n,ans,s+'(',open+1,close);
     recur(n,ans,s+')',open,close+1);
 }
+
 
 int main()
 {

@@ -1,7 +1,7 @@
 #include<bits/stdc++.h>
 using namespace std;
 
-    int getvalueofx(int n){
+     int getvalueofx(int n){
         
         // counting the number of bits one less than the total number of bits required to form the number
         
@@ -10,7 +10,6 @@ using namespace std;
             count++;
         }
 
-        cout << "n: " << n << " count: " << count << endl;
         return count-1;
 
         // T.C : O(log(n))
@@ -31,6 +30,8 @@ using namespace std;
         int y = (1 << x-1)*x;  // counting the number of bits in the one less thna the total number of bits 
         // like 000 , 001, 010, 011, 100, 101 (so here calculating the number of set bits in the 2 - 5  upto all the bit 
         // positions except the rightmost bit position.
+        
+        //* It also represents that (x) set bits will be there (1 << x-1) times
         
         int z = n - (1 << x) +1; // counting the number of set bits in the rightmost position.
         
