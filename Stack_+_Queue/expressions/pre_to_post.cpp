@@ -21,7 +21,6 @@ string preToPost(string pre_exp) {
                 st.top() += ch;
             }
         }
-        
         return st.top();
     }
 
