@@ -18,7 +18,12 @@ using namespace std;
 
             l_max = max(l_max, height[l]);
             r_max = max(r_max, height[r]);
+            for(int i = 0; i < height.size(); i++) {
+                if(height[i] > l_max) {
 
+                    l_max = height[i];
+                }
+            }
             if (height[l] != height[r]) {
                 if (height[l] < height[r]) {
                     if (l_max > height[l]) {
