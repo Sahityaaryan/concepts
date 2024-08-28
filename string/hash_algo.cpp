@@ -47,18 +47,7 @@ int A = 4, B = 97; // random variables which will help in hashing
         vector<int> h = v[0];
         return (h[s.length()-1]);
     }
-
-
-    string longestCommonPrefix(vector<string>& strs){
-        string a = "";
-
-        int i = 0;
-
-        while(i < strs.size()){
-
-
-        }
-    }
+    
 
 
 int main()
