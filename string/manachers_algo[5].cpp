@@ -33,11 +33,11 @@ string preprocess(string s){
 string longestPalindrome (string s){
     string original = s;
 
-     s = preprocess(s);
+     s = preprocess(s); // O(n)
 
      int n = s.length();
 
-     vector<int> p(n,0);
+     vector<int> p(n,0); // s.c : O(2n)
 
      int C=0,R = 0, maxLen = 0, maxCenter = 0,i  = 0;
 
@@ -77,9 +77,12 @@ string longestPalindrome (string s){
          i++;
      }
 
-     int start = (maxCenter - maxLen) /2;w
+     int start = (maxCenter - maxLen) /2;
 
      return original.substr(start,maxLen);
+
+     // T.C : O(N)
+     // S.C : O(2N)
 }
 
 int main()
