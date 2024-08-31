@@ -20,6 +20,45 @@ using namespace std;
         }
     }
 
+    // **** More optimized solution 
+
+    int romanToInt(string s) {
+
+        int ans = 0;
+        int n = s.length();
+        int i = n-2;
+        int top = guessTheValue(s[n-1]); 
+
+          bool topIsFilled = true;
+
+        while(i>=0){
+
+
+            while( i>=0 && top > guessTheValue(s[i])){
+                top -= guessTheValue(s[i]);
+                i--;
+            }
+
+            ans += top;
+            topIsFilled = false;
+
+          if(i>=0){
+            top = guessTheValue(s[i]);
+            topIsFilled = true;
+            } 
+
+            i--;
+        }
+
+        
+        return topIsFilled ? ans+top:ans;
+
+        // T.C:  O{N}
+        // S.C : O(1)
+    }
+
+    //**  By  Stack
+
     int romanToInt1(string s) {
 
         stack<char> st;
@@ -57,7 +96,7 @@ using namespace std;
 
 
 /***
- * By recursion
+ * *By recursion
  * 
 */
 

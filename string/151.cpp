@@ -49,7 +49,14 @@ return trim(ans);
 int main(){
     string s = " hello world ";
     // s = "the sky is blue";
-    cout << "\n" << trim(s) << "|";
+    // cout << "\n" << trim(s) << "|";
+
+    unordered_map<int, int> mp;
+
+    mp[2] = 0;
+
+    cout << (int) mp[0];
+
     cout << '\n';
     return 0;
 }
