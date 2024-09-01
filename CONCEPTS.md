@@ -26,24 +26,28 @@ Eg: (int) (((long long)a * (long long)b) % (10e8 + 7))
 2. *Ceil* => Ceil of x is the smallest element which is ` greater than or equal to x`. Ceil of x doesn’t exist if x is greater than greatest element of arr[].
     *Floor* => Floor of x is the largest element which is `smaller than or equal to x`. Floor of x doesn’t exist if x is smaller than smallest element of arr[].
 
-  
+
 
 
 # LinkedList
 
-1. *Hare Tortoise* 
+1. *Hare Tortoise*
 - whenever you don't know about the size of something and you have to find a particular point then this can help you like if you want to be in the middle of LL then make your hare twice as faster as the tort so if the hare hits the NULL then the tort will be in the middle of the LL.
 
 2. *Recursion*
-- Whenever you want to start your operations from the last node and then follow back doing your operations to the head. 
-- It helps to do so without reversing the entire list.  
+- Whenever you want to start your operations from the last node and then follow back doing your operations to the head.
+- It helps to do so without reversing the entire list.
+
+3. *Good Practice*
+- Always handle the case of (head == NULL) and (head->next == NULL)
+- Try to delete the unused pointer.
 
 
 
 # Recursion
 
 1. *Take Not Take* : best way to return a subarray or substring but with T.C : O(2^N) which may lead to the TLE.
-2. *When you have to return from recursion after first correct match and no need to search for other matches*: 
+2. *When you have to return from recursion after first correct match and no need to search for other matches*:
     - Make the return type bool
     - return true whenever you get the match.
     - and wrap each function call in an if statement so that if it returns true then you just return from there as well and won't call more function calls
@@ -54,9 +58,9 @@ Eg: (int) (((long long)a * (long long)b) % (10e8 + 7))
 
 # Bit Manipulation
 
-1. 1s complement - just replace all the 1s from the 0s and vice versa from the bit form of the number 
+1. 1s complement - just replace all the 1s from the 0s and vice versa from the bit form of the number
 2. 2s complement - add one in the binary you got after 1s complement.
-3. n >> k == n/(2^k) 
+3. n >> k == n/(2^k)
 4. A negative number is stored in the form of 2s complement
 5. working of a not oeprator (written at the back of the copy)
 6. *check the ith bit* : num & (1 << i-1) or (num >> i-1) & 1
@@ -70,7 +74,7 @@ Eg: (int) (((long long)a * (long long)b) % (10e8 + 7))
 
 1. Just see the video by Sahil gaba of 8 patterns
 
-2. 
+2.
 
 ### POTD solutions repo
 
