@@ -11,10 +11,10 @@ using namespace std;
          oneHead = one;
          Node* two = new Node(2);
          secondHead = two;
-        
+
         while(head){
                 Node* temp = new Node(head->data);
-            
+
             if(!head->data){
                 zero->next = temp;
                 zero = zero->next;
@@ -25,49 +25,47 @@ using namespace std;
                 two->next = temp;
                 two = two->next;
             }
-            
+
             head = head->next;
         }
-        
-         
+
+
        if(zeroHead->next){
-           
+
            if(oneHead->next){
                zero->next = oneHead->next;
            }
-           
+
            if(secondHead->next){
-               
+
                if(oneHead->next){
                    one->next = secondHead->next;
                } else {
                zero->next = secondHead->next;
                }
            }
-           
+
                return zeroHead->next;
        }
-       
-          
+
+
            if(oneHead->next){
-               
+
                if(secondHead->next){
                    one->next = secondHead->next;
                }
-               
+
                return oneHead->next;
            }
-           
-           
+
+
            return secondHead->next;
-    
-        
     }
 
 int main()
 {
- 
-    
+
+
     cout << endl;
     return 0;
 }

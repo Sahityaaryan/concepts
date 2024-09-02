@@ -1,37 +1,34 @@
 #include <bits/stdc++.h>
 using namespace std;
 
-ListNode *oddEvenList(ListNode *head)
-{
+ListNode* oddEvenList(ListNode* head) {
 
-    if (!head || !head->next)
-    {
+    if(!head || !head->next){
         return head;
     }
 
-    ListNode *odd = head;
-    ListNode *even = head->next;
-    ListNode *evenHead = head->next;
-    ListNode *tempOdd = nullptr;
-    ListNode *tempEven = nullptr;
+    ListNode* odd = head;
+    ListNode* even = head->next;
+    ListNode* oddHead = odd;
+    ListNode* evenHead = even;
 
-    while (even && even->next)
-    {
-        tempOdd = odd->next->next;
-        tempEven = even->next->next;
+    while(even){
 
-        odd->next = tempOdd;
-        even->next = tempEven;
+        if(even->next){ // for even sized list
+            odd -> next = even -> next;
+            odd = odd->next;
+        } else {
+            break;
+        }
 
-        odd = tempOdd;
-        even = tempEven;
+        even->next = odd->next;
+        even = even->next;
     }
 
     odd->next = evenHead;
 
-    return head;
+    return oddHead;
 }
-
 int main()
 {
 
