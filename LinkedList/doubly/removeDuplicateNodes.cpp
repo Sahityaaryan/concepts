@@ -6,34 +6,31 @@ using namespace std;
         Node* temp = NULL;
         Node* nextNode = NULL;
         Node* currNode = head;
-        
+
         while(currNode){
             nextNode = currNode->next;
-            
-            while(nextNode && currNode->data == nextNode->data){
-                temp = nextNode; 
+
+            while(nextNode && currNode->data == nextNode->data){ // we aren't deleting the current node we are deleting the next node
+                temp = nextNode;
                 nextNode = nextNode->next;
-                
+
                 delete temp;
                 temp = NULL;
             }
-            
-            if(!nextNode){
+
                 currNode->next = nextNode;
-                
-            } else {
-                currNode->next = nextNode;
+            if(nextNode){
                 nextNode->prev = currNode;
             }
-            
+
             currNode = nextNode;
         }
-        
+
         return head;
-        
+
         // T.C : O(N)
         // S.C : O(1)
-        
+
     }
 
 int main()
@@ -41,32 +38,3 @@ int main()
     cout << endl;
     return 0;
 }
-
-    Node * removeDuplicates(struct Node *head)
-    {
-        Node* temp = head;
-        Node* t;
-        
-        while(temp){
-            
-            while(temp->next && temp->next->data == temp->data){
-                
-                t = temp->next;
-                
-                temp->next = temp->next->next;
-                temp->next->prev = temp;
-                t->next = t->prev = NULL;
-                
-                delete t;
-                t = NULL;
-            } 
-            temp = temp->next;
-        }
-        
-        return head;
-        
-        // T.C : O(N)
-        // S.C : O(1)
-        
-    }
-
