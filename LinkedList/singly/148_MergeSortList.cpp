@@ -10,7 +10,7 @@ ListNode* middle(ListNode* &head){
         while(fast!=NULL &&fast->next!=NULL){
             slow=slow->next;
             fast= fast->next->next;
-        }   
+        }
         return slow;
     }
 
@@ -32,6 +32,7 @@ ListNode* middle(ListNode* &head){
                 right=right->next;
             }
         }
+
         while(left!=NULL){
             mptr->next=left;
             mptr=left;
@@ -61,15 +62,15 @@ ListNode* middle(ListNode* &head){
         ListNode* left= head;
         ListNode* right= mid->next;
         mid->next=NULL;
-        
-        //Sort 
+
+        //Sort
         left=sortList(left);
         right=sortList(right);
 
         ListNode* mergeLL= merge(left,right);
-        return mergeLL;   
-
+        return mergeLL;
     }
+
 int main()
 {
     cout << endl;

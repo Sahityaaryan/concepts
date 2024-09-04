@@ -1,12 +1,49 @@
 #include<bits/stdc++.h>
 using namespace std;
 
+
+//* The best time and space complexity
+
+ListNode *getIntersectionNode(ListNode *headA, ListNode *headB) {
+
+        if(!headA || !headB){
+            return nullptr;
+        }
+
+        ListNode* t1 = headA;
+        ListNode* t2 = headB;
+
+        while(t1 != t2){
+            t1 = t1->next;
+            t2 = t2->next;
+
+            if(t1 == t2) return t1;
+
+            if(!t1){
+                t1 = headB;
+            }
+
+            if(!t2){
+                t2 = headA;
+            }
+        }
+
+        return t1;
+
+
+        // T.C : O(N1 + N2)
+        // S.C : O(1)
+
+    }
+
 /***
- * 
+ *
  * My solution with the best time complexity ever solved
- * 
+ *
  * but must checkout other solutions: https://takeuforward.org/data-structure/find-intersection-of-two-linked-lists/
 */
+
+
 
 // ListNode *getIntersectionNode(ListNode *headA, ListNode *headB) {
 
@@ -33,7 +70,7 @@ using namespace std;
 //             hareA = hareA->next->next;
 //         }
 
-       
+
 //         if(hareA && !hareA->next){
 //             backTraceA.emplace_back(hareA);
 //         }
@@ -54,7 +91,7 @@ using namespace std;
 //         if(backTraceA[i] != backTraceB[j]){
 //             return nullptr;
 //         }
-        
+
 //         while(i > 0 && j>0 && backTraceA[i] == backTraceB[j]){
 //             i--;
 //             j--;
@@ -76,14 +113,14 @@ using namespace std;
 
 //         // k = number of similar nodes
 //         // N = size of bigger linkedList
-        
+
 //         // Time Complexity: O(N/2 + k)
 //         // Space Complexity: O(N)
 //     }
 
 int main()
 {
-    
+
     cout << endl;
     return 0;
 }

@@ -33,7 +33,6 @@ void deleteAllOccurOfX(struct Node **head_ref, int x)
         }
         else
         {
-
             t = t->next;
         }
     }
