@@ -26,7 +26,7 @@ ListNode* oddEvenList(ListNode* head) {
     }
 
     odd->next = evenHead;
-1
+
     return oddHead;
 }
 int main()
