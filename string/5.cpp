@@ -47,8 +47,6 @@ string longestPalindrome1(string s)
         {
             if (isPalin(s, lagger, leader) && leader != lagger)
             {
-                // cout << "lagger: "<< lagger  << " leader: " << leader << endl;
-
                 if (width < leader - lagger + 1)
                 {
                     width = leader - lagger + 1;

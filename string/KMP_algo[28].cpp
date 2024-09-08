@@ -43,9 +43,6 @@ int strStr(string haystack, string needle) {
         }  else {
             if(j == 0){
                 i++;
-
-
-
             } else {
                 j = lps[j-1];
             }
