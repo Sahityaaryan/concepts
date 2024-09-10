@@ -20,7 +20,7 @@ Node* merge(Node* list1, Node* list2){
         res->next = NULL;
     }
 
-    if(list1){
+    if(list1){  
         res->bottom = list1;
     } else {
         res->bottom = list2;

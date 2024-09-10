@@ -35,7 +35,16 @@ using namespace std;
 
     //     while(t){
     //       p = k-1;
-    //         while(t && p){
+    //         while(t && p){            list2 = list2->bottom;
+        }
+        res->next = NULL;
+    }
+
+    if(list1){  
+        res->bottom = list1;
+    } else {
+        res->bottom = list2;
+    }
     //         t = t->next;
     //         p--;
     //       }
@@ -116,7 +125,6 @@ using namespace std;
 
           if(!p && t){
             nextHead = t->next;
-
             newHead = reverseLL(currHead,t);
 
             if(!ansHead){

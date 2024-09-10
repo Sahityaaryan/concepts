@@ -1,6 +1,9 @@
 #include<bits/stdc++.h>
 using namespace std;
 
+
+
+
 ListNode* addTwoNumbers(ListNode* l1, ListNode* l2) {
         // No need of recursion the digits are already reversed along with the carry game 
         
@@ -32,7 +35,6 @@ ListNode* addTwoNumbers(ListNode* l1, ListNode* l2) {
 
            if(l1) l1 = l1->next;
            if(l2) l2 = l2->next;
-
            if(l1 || l2 || carry){
                ListNode* newNode = new ListNode();
                t->next = newNode;
