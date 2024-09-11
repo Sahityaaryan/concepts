@@ -11,7 +11,7 @@ vector<int> asteroidCollision(vector<int>& asteroids) {
             st.push(ele);
         } else {
 
-            while(!st.empty() && (st.top() > 0) && st.top() < abs(ele)){
+            while(!st.empty() && (st.top() > 0) && st.top() < abs(ele)){    
                 st.pop();
             }
 

@@ -11,19 +11,14 @@ using namespace std;
 
     // 2. If we find any equal elements then it depends on us which side we choose to move (can be left or can be right)
 
-    int trap(vector<int>& height) {
+ int trap(vector<int>& height) {
         int area = 0, l = 0, r = height.size() - 1, l_max = 0, r_max = 0;
 
         while (l != r) {
 
             l_max = max(l_max, height[l]);
             r_max = max(r_max, height[r]);
-            for(int i = 0; i < height.size(); i++) {
-                if(height[i] > l_max) {
 
-                    l_max = height[i];
-                }
-            }
             if (height[l] != height[r]) {
                 if (height[l] < height[r]) {
                     if (l_max > height[l]) {
@@ -41,9 +36,6 @@ using namespace std;
             }
         }
         return area;
-
-        // T.C : O(N)
-        // S.C : O(1)
     }
 
 int main()
