@@ -23,6 +23,6 @@ Node* reverseDLL(Node * head)
 
 int main()
 {
-    cout << endl;
+
     return 0;
 }
