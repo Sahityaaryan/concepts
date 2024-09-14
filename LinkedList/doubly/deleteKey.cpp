@@ -45,5 +45,6 @@ void deleteAllOccurOfX(struct Node **head_ref, int x)
 int main()
 {
 
+    cout << endl;
      return 0;
 }
