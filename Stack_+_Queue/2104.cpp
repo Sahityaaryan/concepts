@@ -112,5 +112,7 @@ long long maximum_sum(vector<int>& arr){
 
 int main(){
 
+    cout << "Jai Mata Di" << endl;
+
     return 0;
 }
