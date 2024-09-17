@@ -4,52 +4,56 @@ using namespace std;
 
 // concept m == (2*x) - ((2*x) - m)
 
+// Here I got the most of the logic but i couldn't get as where to store the complex (result of substrction) 
+// but the solution is to store that "complex" in the stack itself and you will identify the complex as the complex will always be less than the min_ele
 class MinStack {
-public:
-    private:
-        stack<long long> min_stack;
-        long long min_ele = INT_MAX;
-    
+
+    #define ll long long
+
+        stack<ll>minstack;
+        int min_ele = INT_MAX;
+        
+
 public:
     MinStack() {}
-
+    
     void push(int val) {
-        if (min_stack.empty()) {
-            min_stack.push(val);
+
+        if(minstack.empty()){
             min_ele = val;
+            minstack.push(val);
         } else {
-            if (val < min_ele) {
-                long long tempval = 2 * (long long)val;  
-                min_stack.push(tempval - min_ele);
+
+            if(val < min_ele){
+                ll complex = (2*val - min_ele);
                 min_ele = val;
-            } else {
-                min_stack.push(val);
+                minstack.push(complex);
+                return;
             }
-            
+            minstack.push(val);
         }
+        
     }
-
+    
     void pop() {
-        if (min_stack.empty()) return;
-        if (min_stack.top() < min_ele) {
-            min_ele = 2 * min_ele;
-            min_ele -=  min_stack.top();
+        
+        if(minstack.top() < min_ele){
+            ll complex = minstack.top();
+            min_ele = 2*min_ele - complex;
         }
-        min_stack.pop();
-    }
 
+        minstack.pop();
+    }
+    
     int top() {
-        if (min_stack.empty()) return -1;
-        if (min_stack.top() < min_ele) {
-            return min_ele;
-        }
-        return min_stack.top();
+        return minstack.top();
     }
-
+    
     int getMin() {
         return min_ele;
     }
 };
+
 
 
 int main()
