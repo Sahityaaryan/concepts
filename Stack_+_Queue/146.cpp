@@ -19,7 +19,7 @@ public:
     int capacity;
     unordered_map<int, Node*>mp;
 
-    // here ethe delete is successfull because we are making the safe-guarding head and tail
+    // here the delete is successfull because we are making the safe-guarding head and tail
 
     Node* head = new Node(-1, -1);
     Node* tail = new Node(-1, -1);
