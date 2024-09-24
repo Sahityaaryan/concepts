@@ -39,7 +39,7 @@ using namespace std;
 
             bool searching = false;
 
-            while (j < board[0].size()) { 
+            while (j < board[0].size()) {
 
                 if (board[i][j] == word[0]) {
                         searching =
@@ -74,6 +74,8 @@ int main()
     } else {
         cout << "Not found";
     }
+
+
     cout << endl;
     return 0;
 }
