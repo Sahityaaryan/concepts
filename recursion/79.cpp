@@ -74,8 +74,6 @@ int main()
     } else {
         cout << "Not found";
     }
-
-
     cout << endl;
     return 0;
 }
