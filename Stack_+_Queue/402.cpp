@@ -38,9 +38,6 @@ string removeKdigits(string num, int k) {
 
     reverse(ans.begin(), ans.end());
         
-    if(ans == ""){
-        return "0";
-    }
 
      i = 0;
 
