@@ -56,6 +56,6 @@ int main(){
     s = "112";
 
     cout << "\nans: " << removeKdigits(s, 1);
-    cout << '\n';
+
     return 0;
 }
