@@ -51,7 +51,6 @@ string removeKdigits(string num, int k) {
 int main(){
 
     string s = "1432219";
-    s = "10200";
     s = "10";
     s = "112";
 
