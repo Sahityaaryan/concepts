@@ -1,33 +1,40 @@
 #include<bits/stdc++.h>
 using namespace std;
 
+#define d double
+
 /**
  * * Binary exponentiation
  * 
 */
 
- double myPow(double x, int n) {
-       
-       double ans = 1.0;
+      d myPow(double x, int n) {
 
-        long long nn = (static_cast<long long>(n));
-
-        if(n < 0){
-            nn = -1*nn;
+        if(x == 1 || n==1){
+            return x;
         }
+    
+    d res = x;
+    d ans = 1;
 
-       while(nn){
+    long long nn = static_cast<long long>(n); // There is a need of converting it to long long because we are converting it to +ve and 
+    // -2147483648 => 2147483648 and this is out of the range for an Integer
 
-            if(nn%2){
-                ans *= x;
-                nn--;
-                cout << "\nx: " << x  << "\tnn: " << nn << endl;
-            } 
-                x *= x;
-                nn/=2;
-       }
+    nn = abs(nn);
+    
+    while(nn){
 
-        return (n < 0) ? 1/ans : ans;
+        if(nn%2){
+            ans = ans * res;
+            nn--;
+        } 
+
+            res = res * res;
+            nn /= 2;
+        
+    }
+
+    return n < 0 ? 1/ans:ans;
     }
 
 

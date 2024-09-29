@@ -3,20 +3,16 @@ using namespace std;
 
 int mod=1000000007;
 
+
+/**
+ * all the below methods are just for informational purpose to let you know how to write the code of the recursion
+ *** but this can be solved only by recursion
+ */
+
 bool PrintS(int ind, vector<int> &ds, int s, int sum, int arr[], int n){
     
     if(ind == n){
-
-    if(s==sum){
-        for(auto it : ds){
-            cout << it << " ";
-        }
-
-        cout << endl;
-        return true;
-    }
-
-    return false;
+        return s==sum;
     }
 
     ds.push_back(arr[ind]);
@@ -60,6 +56,13 @@ int PrintS(int ind, int s,int sum, int arr[], int n){
 }
 
 
+
+/**
+ * Here we are implementing the dp (memoization) which means that we are storing the result on a particular condition like we 
+ * know that if till index = 2 if the target is 5 then after further recursion call it will become 23 so why not to store the answer? 
+ */
+
+
 int sol(int ind,int n, int target,int sum, int arr[], vector<vector<int>>& dp) 
 {
     if(ind==n){
@@ -72,7 +75,7 @@ int sol(int ind,int n, int target,int sum, int arr[], vector<vector<int>>& dp)
         return 0;
     }
 
-    if(dp[ind][target] != -1){
+    if(dp[ind][target] != -1){ // if we have the answer in the memory then we must return it if not then we will calculate further
         return dp[ind][target];
     }
 
@@ -90,7 +93,7 @@ int sol(int ind,int n, int target,int sum, int arr[], vector<vector<int>>& dp)
     
 int perfectSum(int num[], int n, int k)
 {
-        vector<vector<int>> dp(n, vector<int>(k + 1, -1));
+        vector<vector<int>> dp(n, vector<int>(k + 1, -1)); 
         return sol(0,n, 0, k ,num, dp);
         
 }
