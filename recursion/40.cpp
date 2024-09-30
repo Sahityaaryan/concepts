@@ -17,6 +17,9 @@ using namespace std;
             // then also they will get the chance of a function call because the first index of the next function call will always be
             // executed. --> thus reducing the chance of duplicacy
 
+            // we are two duplciate elements two posibilities .-> tempusum + same1 , tempusum + same1 + same2, tempusum + same2 , wo we are getting the same sum two times and if the nuumber repeat more than two times then it will lead to a huge branch of recursions and lead to memory exhaustion
+
+            // but by this we got this :-> tempusum + same1 , tempusum + same1 + same2 (in the next call after the first possibility)
                 i++;
                 continue;
             }
