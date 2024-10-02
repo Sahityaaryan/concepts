@@ -10,6 +10,7 @@ using namespace std;
             }
             return;
         }
+
         int i = ind;
 
         while(i <= 9){
@@ -27,12 +28,12 @@ using namespace std;
             i++;
         }
     }
+
     vector<vector<int>> combinationSum3(int k, int n) {
 
         vector<vector<int>> ans;
         vector<int> tempArr;
-        // vector<int> arr = {1,2,3,4,5,6,7,8,9};
-
+        
         sol(0, 1, n, tempArr, ans, k);
 
         return ans;
