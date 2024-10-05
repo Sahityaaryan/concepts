@@ -1,5 +1,8 @@
 #include<bits/stdc++.h>
 using namespace std;
+    #define ll long long
+
+    const int MOD = 1000000007;
 
 void recursionSorting(stack<int>& st, int n){
     
@@ -13,8 +16,6 @@ void recursionSorting(stack<int>& st, int n){
     st.pop();
     
     recursionSorting(st,k);
-    
-    
     
    if( n != -1){
        
@@ -41,8 +42,38 @@ void recursionSorting(stack<int>& st, int n){
 }
 
 
+
+    int countGoodNumbers(long long n) {
+
+        int ans = 1;
+        int res = 20;
+
+        if(n%2){
+            ans *= 5;
+            n--;
+        }
+
+        n /= 2;
+
+        while(n){
+
+            if(n%2){
+                ans = (int) (((ll)ans * (ll)res) % MOD);
+                n--;
+            }
+
+            res = (int) (((ll)res * (ll)res) % MOD);
+            n /= 2;
+        }
+
+        return ans;        
+    }
+
+
+
 int main()
 {
+    cout << "good num: " << countGoodNumbers(10);
     cout << endl;
     return 0;
 }
