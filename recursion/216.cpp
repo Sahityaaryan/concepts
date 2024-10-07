@@ -41,7 +41,6 @@ using namespace std;
 
 int main()
 {
-    cout << "hi";
     cout << endl;
     return 0;
 }
