@@ -1,64 +1,63 @@
 #include<bits/stdc++.h>
 using namespace std;
 
-// Backtracking: 
+class Solution {
+public:
 
+    // worthless : 
 
-bool sol(vector<vector<char>>& board, string& word, int vertical,
-             int horizontal, string temp, int index) {
+bool check(string s, int leader, int lagger)
+{
 
-
-        if (index == word.length()) {
-            return true;
-        }
-
-        if (vertical == board.size() || vertical < 0 || horizontal < 0 ||
-            horizontal == board[0].size() || word[index] != board[vertical][horizontal] or board[vertical][horizontal] == '!') {
+    while (leader > lagger)
+    {
+        if (s[leader] != s[lagger])
+        {
             return false;
         }
-
-
-        char c = board[vertical][horizontal];
-
-        board[vertical][horizontal] = '!';
-
-        bool right = sol(board, word, vertical, horizontal+1, temp + board[vertical][horizontal], index + 1);
-
-        bool left = sol(board, word, vertical , horizontal - 1, temp + board[vertical][horizontal], index + 1);
-
-        bool down  = sol(board, word, vertical + 1, horizontal, temp + board[vertical][horizontal],  index + 1);
-
-        bool up  = sol(board, word, vertical - 1, horizontal, temp + board[vertical][horizontal], index + 1);
-            
-        board[vertical][horizontal] = c;
-
-        return right || left || down || up;
+        leader--;
+        lagger++;
     }
 
-    bool exist(vector<vector<char>>& board, string word) {
-        
-        // founder
+    return true;
+}
 
-        int i = 0, j = 0, height = board.size(), width = board[0].size();
+void sol(vector<vector<string>> &ans, vector<string>& temp, string& s, int index)
+{
 
-        while(i < height){
+    if (index == s.length())
+    {
+        ans.emplace_back(temp);
+        return;
+    }
 
-            j = 0;
+    int i = index;
 
-            while(j < width){
+    while(i < s.length()){
 
-                if(word[0] == board[i][j] && sol(board, word, i, j, "", 0)){
-                    return true;
-                }
-
-                j++;
-            }
-            i++;
+        if(check(s, i, index)){
+            temp.emplace_back(s.substr(index, i - index + 1));
+            sol(ans,temp,s,i+1);
+            temp.pop_back();
         }
-
-        return false;
-
+        i++;
     }
+  
+}
+
+vector<vector<string>> partition(string s)
+{
+
+    // by Brute force it is going upto the T.C : O((N^3 -3(N^2) + 2N) / 2);
+    // I can ease it by one multiple of N by using recursion to involve one level of iteration in the recursion stack
+    vector<vector<string>> ans;
+    vector<string> temp;
+
+    sol(ans, temp, s, 0);
+
+    return ans;
+}
+};
 
 int main()
 {
