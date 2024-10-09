@@ -1,68 +1,67 @@
 #include<bits/stdc++.h>
 using namespace std;
 
+class Solution {
+public:
     bool sol(vector<vector<char>>& board, string& word, int vertical,
-             int horizontal, string temp, int v_index, int h_index) {
+             int horizontal, int index) {
 
 
-        cout << "temp: " << temp << " vertical: " << vertical
-             << " horizontal: " << horizontal << '\n';
+        if (index == word.length()) {
+            return true;
+        }
 
         if (vertical == board.size() || vertical < 0 || horizontal < 0 ||
-            horizontal == board[0].size()) {
+            horizontal == board[0].size() || word[index] != board[vertical][horizontal] or board[vertical][horizontal] == '!') {
             return false;
         }
 
-        if (temp.length() > 0 &&
-            temp[temp.length() - 1] != word[temp.length() - 1]) {
-            return false;
-        }
 
-        if (temp.length() == word.length()) {
-            return temp == word;
-        }
+        char c = board[vertical][horizontal];
 
-        bool searching  =   sol(board, word, vertical, horizontal - 1, temp + board[vertical][horizontal], v_index, h_index) ||
-                            sol(board, word, vertical, horizontal + 1, temp + board[vertical][horizontal], v_index, h_index) ||
-                            sol(board, word, vertical + 1, horizontal, temp + board[vertical][horizontal], v_index, h_index);
+        board[vertical][horizontal] = '!';
 
-            if(searching){
-                return true;
-            }
+        bool right = sol(board, word, vertical, horizontal+1, index + 1);
 
-        int i = v_index;
-        int j = h_index == board[0].size() ? 0:h_index;
+        bool left = sol(board, word, vertical , horizontal - 1,index + 1);
 
-        bool isFound = false;
+        bool down  = sol(board, word, vertical + 1, horizontal, index + 1);
 
-        while (i < board.size()) {
+        bool up  = sol(board, word, vertical - 1, horizontal, index + 1);
+            
+        board[vertical][horizontal] = c;
 
-            bool searching = false;
+        return right || left || down || up;
+    }
 
-            while (j < board[0].size()) {
+    bool exist(vector<vector<char>>& board, string word) {
+        
+        // founder
 
-                if (board[i][j] == word[0]) {
-                        searching =
-                            sol(board, word, i, j - 1, temp + board[i][j], v_index, j+1) ||
-                            sol(board, word, i, j + 1, temp + board[i][j], v_index, j+1) ||
-                            sol(board, word, i + 1, j, temp + board[i][j], v_index, j+1);
+        int i = 0, j = 0, height = board.size(), width = board[0].size();
+
+
+        // Here by this wherever we found any matching char we start our recursion from that very point
+
+        while(i < height){
+
+            j = 0;
+
+            while(j < width){
+
+                if(word[0] == board[i][j] && sol(board, word, i, j, 0)){
+                    return true;
                 }
 
                 j++;
             }
-
-            j = 0;
-
-            isFound = isFound || searching;
             i++;
         }
 
-        return isFound;
-    }
+        return false;
 
-    bool exist(vector<vector<char>>& board, string word) {
-        return sol(board, word, 0, 0, "", 0, 0);
     }
+};
 
 int main()
 {
@@ -77,3 +76,4 @@ int main()
     cout << endl;
     return 0;
 }
+
