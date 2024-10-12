@@ -21,7 +21,7 @@ int largestRectangleArea(vector<int>& heights) {
 
     // and if you observe closely the case (i == n) then you will realise it is calculating the area for each height in the stack
 
-        int h = heights[st.top()];
+        int h = heights[st.top()];  
         int pse_ind = pse[st.top()];
 
         st.pop();
