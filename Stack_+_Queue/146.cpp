@@ -89,8 +89,6 @@ public:
 
 int main(){
 
-    cout << "this is lru cache";
-
 
     return 0;
 }
