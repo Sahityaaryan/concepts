@@ -88,8 +88,5 @@ public:
 
 
 int main(){
-
-    cout << "Lru cache sum";
-
     return 0;
 }
