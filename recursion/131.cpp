@@ -4,8 +4,6 @@ using namespace std;
 class Solution {
 public:
 
-    // worthless : 
-
 bool check(string s, int leader, int lagger)
 {
 
@@ -47,7 +45,6 @@ void sol(vector<vector<string>> &ans, vector<string>& temp, string& s, int index
 
 vector<vector<string>> partition(string s)
 {
-
     // by Brute force it is going upto the T.C : O((N^3 -3(N^2) + 2N) / 2);
     // I can ease it by one multiple of N by using recursion to involve one level of iteration in the recursion stack
     vector<vector<string>> ans;
@@ -57,6 +54,7 @@ vector<vector<string>> partition(string s)
 
     return ans;
 }
+
 };
 
 int main()
