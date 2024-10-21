@@ -33,7 +33,7 @@ public:
 
         return right || left || down || up;
     }
-
+                             
     bool exist(vector<vector<char>>& board, string word) {
         
         // founder
