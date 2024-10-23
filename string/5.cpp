@@ -110,3 +110,28 @@ int main()
     cout << endl;
     return 0;
 }
+
+
+class Solution {
+public:
+    int lengthOfLongestSubstring(string s){
+		// windows containing some patterns
+		
+		int i = 0, window = -1, lagger = 0;
+
+		vector<int> mp(265,-1);
+		
+		while(i < s.length()){
+			if(mp[s[i]] != -1){
+                lagger = i;
+			} 
+			mp[s[i]] = i;
+			window = max(window, i - lagger);
+			i++;
+		}
+
+        window = max(window, i-lagger);
+
+		return window == -1 ? s.length():window; // entire window is of non repetetive chars
+}
+};
