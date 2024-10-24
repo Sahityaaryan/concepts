@@ -58,10 +58,14 @@ int main()
             }
             return;
         }
+
+        while(i < num.length() && num[i] == '0'){ // ignoring the leading zeros
+            i++;
+        }
+
+
        
         for(int j = i; j < num.length(); j++){
-
-            if(j != i && num[i] == 0) break;
 
             string part = num.substr(i,j-i+1);
             long currValue = stol(part);
