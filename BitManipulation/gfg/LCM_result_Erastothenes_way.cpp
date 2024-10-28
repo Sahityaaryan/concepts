@@ -1,6 +1,14 @@
 #include<bits/stdc++.h>
 using namespace std;
 
+    void sieve() {}
+    
+    
+    // LCM:
+    
+    // The method below is literally doing the LCM of the Number as the precomputed array is containing
+    // the prime factor from which that index number will be divisible and that's all we want while 
+    // calculating the lcm
 
     vector<int> findPrimeFactors(int N) {
         
@@ -36,6 +44,7 @@ using namespace std;
     }
     
     return ans;
+    
     
     
     // for calculating the SPF
