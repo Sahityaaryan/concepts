@@ -4,6 +4,8 @@ using namespace std;
 
 long long int calcCount(string s,int k){
 
+    // it is calculating the substrings which has atmost k distinct characters but not more than that
+
         int lagger = 0;
         int leader = 0 ;
         int n = s.length() ;
