@@ -2,9 +2,43 @@
 using namespace std;
 
 
+//    Sieve of erastothenes
 
 
-//    sieve of erastothenes
+
+// Need of again explainations :- 
+
+// sieve till roots :- 1. precomputation (creation of an array which will tell whether the number is prime or not in O(1) time complexity) 2.Then simple iteration to check whether a given number is prime or not using precomputed array which we have created
+
+int countPrime(int n){
+
+       vector<bool> primes(n+1, true);
+        primes[0] = primes[1] = false;// //    sieve of erastothenes
+
+
+        // precomputation
+
+        for(int i = 2; i <= sqrt(n); i++){
+
+            if(primes[i]){
+                for(int j = i*i; j <= n; j+=i){
+                    primes[j] = false;
+                }
+            }
+        }
+
+        int counter = 0;
+
+        for(int i = 2; i < n; i++){
+            if(primes[i]) counter++;
+        }
+
+        return counter;
+}
+
+
+
+
 
 // T.C  = O(N*loglogN)
 
@@ -23,7 +57,7 @@ using namespace std;
 
         // counter = n-1;
 
-        for(int i = 2; i<= sqrt(n) ;i++){
+        for(int i = 2; i<= sqrt(n); i++){
             
             if(primes[i]){
                 for(int j = i*i; j <= n; j+=i){
