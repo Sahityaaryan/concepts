@@ -20,38 +20,38 @@ using namespace std;
         }
     }
 
+
+
+
     // **** More optimized solution 
+
 
     int romanToInt(string s) {
 
-        int ans = 0;
         int n = s.length();
+
+
+        if(n <= 1){
+            return n==0 ? 0:guessTheValue(s[0]);
+        }
+
         int i = n-2;
-        int top = guessTheValue(s[n-1]); 
-
-          bool topIsFilled = true;
-
-        while(i>=0){
+        int front, prev, value = guessTheValue(s[i+1]);
 
 
-            while( i>=0 && top > guessTheValue(s[i])){
-                top -= guessTheValue(s[i]);
-                i--;
+        while(i >= 0){
+            prev = guessTheValue(s[i+1]);
+            front = guessTheValue(s[i]);
+
+            if(front >= prev){
+                value += front;
+            } else {
+                value -= front;
             }
-
-            ans += top;
-            topIsFilled = false;
-
-          if(i>=0){
-            top = guessTheValue(s[i]);
-            topIsFilled = true;
-            } 
-
             i--;
         }
 
-        
-        return topIsFilled ? ans+top:ans;
+        return value; 
 
         // T.C:  O{N}
         // S.C : O(1)

@@ -4,54 +4,54 @@ using namespace std;
     int divide(int dividend, int divisor) {
 
 
-        int d = divisor, rem = dividend;
-        int ans = 0, i = 0;
+        // questions: 
 
-        bool negAns = false;
+        // 1. why are we not checking whether the quotient > INT_MAX we are directly checking the (1 << cnt-1) ?
+        // Ans:- because the (1 << cnt-1) is an integer and will overflow at 1 << 31 and will give -(2^31) which will eventually reduce the
+        // quotient sum which are we doing and hence quotient won't reach the (quotient > INT_MAX) position even though it should.
+        // And the divident will also increase because substracting from a negative value will add ultimately and hence we willl get the wrong
+        // quotient
 
-        divisor = abs(divisor);
-        dividend = abs(dividend);
 
+        // 2. Why to check only for (1 << cnt-1 == INT_MIN), why not (1 << cnt-1 <= INT_MIN)?
+        // Ans:- because the max value of dividend is 2^31  
 
-        if((dividend < 0 && divisor > 0) || (dividend > 0 && divisor < 0)){
-            negAns = true;
+        if(dividend == 0 || dividend == 1 && (divisor > 1 || divisor < -1)){
+            return 0;
         }
 
-        if(divisor > dividend){
-            return (negAns ? -dividend : dividend);
+        // quotient is bounded
+
+        int cnt = 0;
+        ll quotient = 0;
+        bool isNeg = (divisor < 0 && dividend > 0 || dividend < 0 && divisor > 0);
+
+        long long divid = abs(static_cast<long long>(dividend));
+        long long divis = abs(static_cast<long long>(divisor));
+
+        if(divid == divis){
+            return isNeg ? -1:1;   
         }
 
-        while(rem > divisor){
-            d = divisor;
-            i = 1;
+        
 
-            while(dividend > d){
-                d = d << 1;
-                i*=2;
+        while(divid >= divis){
+            cnt = 0;
+
+            while(divid >= (divis << cnt)){
+                cnt++;
             }
 
-            if(dividend == d){
-                ans = i/2;
-                rem = 0;
-                break;
+            if((1 << cnt-1) == INT_MIN){
+                return isNeg ? INT_MIN:INT_MAX;
             }
 
-            cout << "d: " << d << '\n';
-
-            rem = dividend - (d >> 1);
-
-            // cout << "d: " << i << endl;
-            // cout << "d : " 
-            dividend = rem;
-
-            ans += (i/2);
+            divid -= (divis << cnt-1);
+            quotient += (1 << cnt-1);
         }
 
-        if(negAns){
-            ans *= -1;
-        }
-
-        return ans;
+        return isNeg ? -1*quotient : quotient;
+        
     }
 
 int main()

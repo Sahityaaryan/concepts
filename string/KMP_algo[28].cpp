@@ -17,7 +17,7 @@ int strStr(string haystack, string needle) {
 
     // formation of longest prefix and suffix array
 
-        while(i < needle.length()){
+        while(i < needle.length()){ 
 
 
         if(needle[i] == needle[prevLps]){ // if suffix matches prefix then we will increase the put the prevLps+1 in the array which simply means that (prevLps+1) suffix matches with (prevLps+1) prefix
