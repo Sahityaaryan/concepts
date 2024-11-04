@@ -33,6 +33,8 @@ int longestNiceSubarray(vector<int> &nums)
 
 
 int main(){
+
+    cout << "revised approach";
     
     cout << endl;
     return 0;
