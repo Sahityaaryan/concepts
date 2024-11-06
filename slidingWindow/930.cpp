@@ -134,7 +134,9 @@ using namespace std;
 
         for (int num : nums) {
             curr_sum += num;
-            if (count.find(curr_sum - goal) != count.end()) {
+            if (count.find(curr_sum - goal) != count.end()) { // why this is working because if we reduce those count[curr_sum-goal] subarrays from the current subarray then the resulting subarrays
+            // has the same sum suppose from [1, 0, 1, 0, 1] we got two subarray like => [0,1,0,1] + [1,0,1] so what we have reduced in these subarrays [1] and [1,0] subarrays which counts to the 
+            // curr_sum(3) - goal(2) == 1
                 total_subarrays += count[curr_sum - goal];
             }
             count[curr_sum]++;
@@ -155,7 +157,7 @@ return 0;
 
 /** 
 
-The code snippet you provided is an implementation of the prefix sum technique combined with a hash map (or unordered map in C++) to efficiently count the number of subarrays that sum to a given target (goal). This approach is particularly useful for problems involving subarray sums and is based on the following principles:
+The code snippet you provided is an implementation of the prefix sum technique combined with a hash map (or unordered map in C++) to efficiently count the number of subarrays that sum to a given target (goal). This approach is particularly useful for problems involving *******subarray sums********  and is based on the following principles:
 Key Concepts:
 
     Prefix Sum: The prefix sum is a running total of the elements in an array. By maintaining a cumulative sum (curr_sum), you can determine the sum of any subarray by subtracting two prefix sums.
