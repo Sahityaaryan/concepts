@@ -158,9 +158,18 @@
 //   }
 
 
+// public  buildHeap(rndmArr:Array<number>){
+
+//     if(rndmArr.length <= 1){
+//       return;
+//     }
+    
+//     let rightmost_bottomost_internal_node_index:number = this.parent(this.size-1); 
+//     for(let i = rightmost_bottomost_internal_node_index; i >= 0 ;i-- ){
+//       this.MinHeapify(i);
+//     }
 //   }
-
-
+//   }
 
 
 // let heap1:MinHeap1 = new MinHeap1(8);
