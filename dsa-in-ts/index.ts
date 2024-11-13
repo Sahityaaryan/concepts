@@ -216,11 +216,19 @@ class MinHeap1{
     }
 
     public heapSort(){
+      let originalSize = this.size;
+      // making it a maxheap first
+      this.buildMaxHeap();
 
+      // mantaining the maxHeap by extracting the maximum element each time
       for(let lastIndex = this.size-1; lastIndex >= 1; lastIndex--){
+        console.log('array: ', this.arr);
         [this.arr[lastIndex], this.arr[0]] =  [this.arr[0], this.arr[lastIndex]];
+        this.size--;
         this.MaxHeapify(0);
       }
+
+      this.size = originalSize;
     }
 
     }
@@ -250,7 +258,7 @@ class MinHeap1{
 heap1.printHeap();
 //   heap3.MinHeapify();
 //   heap3.decreaseKey(4,1);
-  heap1.buildHeap();
+  heap1.heapSort();
   console.log("after: ");
   heap1.printHeap();
 

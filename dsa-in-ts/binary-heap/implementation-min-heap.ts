@@ -132,43 +132,111 @@
 //   }
 
 
-//   // Implementing Delete Key
 
-//   public deleteKey(i:number){
-//       if(i < 0 || i >= this.size){
-//           return;
+//     // Implementing Delete Key
+
+//     public deleteKey(i:number){
+//         if(i < 0 || i >= this.size){
+//             return;
+//         }
+//         this.arr[i] = Number.MAX_SAFE_INTEGER;
+//         this.MinHeapify(i);
+//         this.size--;
+//     }
+
+//     // Printing heap
+//     public printHeap(){
+
+//      let tempArr:Array<number> = [];
+
+//      for(let i = 0;i<this.size;i++){
+//       tempArr.push(this.arr[i]);
+//      }
+
+//      console.log(tempArr);
+
+//     //  tempArr = []; // by this garbage collector of js will free up the space taken previously because I have removed the reference of the previous array and hence it will be deallocated from the memory
+//     }
+
+//     public static printHeap(tempArr:Array<number>){
+ 
+//       for(let i = 0;i<tempArr.length;i++){
+//        tempArr.push(tempArr[i]);
 //       }
-//       this.arr[i] = Number.MAX_SAFE_INTEGER;
-//       this.MinHeapify(i);
-//       this.size--;
-//   }
-
-//   // Printing heap
-//   public printHeap(){
-
-//    let tempArr:Array<number> = [];
-
-//    for(let i = 0;i<this.size;i++){
-//     tempArr.push(this.arr[i]);
-//    }
-
-//    console.log(tempArr);
-
-//   //  tempArr = []; // by this garbage collector of js will free up the space taken previously because I have removed the reference of the previous array and hence it will be deallocated from the memory
-//   }
+ 
+//       console.log(tempArr);
+ 
+//      //  tempArr = []; // by this garbage collector of js will free up the space taken previously because I have removed the reference of the previous array and hence it will be deallocated from the memory
+//      }
 
 
-// public  buildHeap(rndmArr:Array<number>){
+//     public  buildHeap(){
 
-//     if(rndmArr.length <= 1){
-//       return;
+//       if(this.size <= 1){
+//         return;
+//       }
+
+//       // let tempArr:Array<number> = this.arr;
+      
+//       let rightmost_bottomost_internal_node_index:number = this.parent(this.size-1); 
+//       for(let i = rightmost_bottomost_internal_node_index; i >= 0 ;i-- ){
+//         this.MinHeapify(i);
+//       }      
+//     } 
+
+
+//     // Implementing Heap sort and necessary algorithms for that
+
+//     public MaxHeapify(currIndex:number = 0){
+
+//       if(currIndex >= this.size){
+//         return;
+//       }
+
+//       let leftIndex:number = this.left(currIndex);
+//       let rightIndex:number = this.right(currIndex);
+//       let largestIndex:number = currIndex;
+
+//       if(leftIndex < this.size && this.arr[leftIndex] > this.arr[largestIndex]){
+//         largestIndex = leftIndex;
+//       }
+
+//       if(rightIndex < this.size && this.arr[rightIndex] > this.arr[largestIndex]){
+//         largestIndex = rightIndex;
+//       }
+
+//       if(largestIndex != currIndex){
+
+//         [this.arr[largestIndex], this.arr[currIndex]] = [this.arr[currIndex] , this.arr[largestIndex]];
+//         this.MaxHeapify(largestIndex);
+//       }
+      
 //     }
-    
-//     let rightmost_bottomost_internal_node_index:number = this.parent(this.size-1); 
-//     for(let i = rightmost_bottomost_internal_node_index; i >= 0 ;i-- ){
-//       this.MinHeapify(i);
+
+//     public buildMaxHeap(){
+//       let rightmost_bottomost_internal_node_index:number = this.parent(this.size-1);
+
+//       for(let i = rightmost_bottomost_internal_node_index; i >= 0 ;i-- ){
+//         this.MaxHeapify(i);
+//       }   
 //     }
-//   }
+
+//     public heapSort(){
+//       let originalSize = this.size;
+//       // making it a maxheap first
+//       this.buildMaxHeap();
+
+//       // mantaining the maxHeap by extracting the maximum element each time
+//       for(let lastIndex = this.size-1; lastIndex >= 1; lastIndex--){
+//         console.log('array: ', this.arr);
+//         [this.arr[lastIndex], this.arr[0]] =  [this.arr[0], this.arr[lastIndex]];
+//         this.size--;
+//         this.MaxHeapify(0);
+//       }
+
+//       this.size = originalSize;
+//     }
+
 //   }
 
 
