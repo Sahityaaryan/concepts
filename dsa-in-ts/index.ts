@@ -3,19 +3,19 @@ class MinHeap1{
     public arr:Array<number> = [];
     public size!:number;
 
-    constructor(
-      public capacity:number,
-    ){ this.size = 0;}
-
-
     // constructor(
-    //   public capacity:number = 20,
-    // ){ 
-    //     //   this.arr = [40, 20, 30, 35,25,80, 32, 100, 70, 60];
-    //     this.arr = [10, 20, 30, 40, 50, 35, 38, 45];
-    //     this.size = this.arr.length;
-    //   this.capacity = 20;
-    // }
+    //   public capacity:number,
+    // ){ this.size = 0;}
+
+
+    constructor(
+      public capacity:number = 20,
+    ){ 
+        //   this.arr = [40, 20, 30, 35,25,80, 32, 100, 70, 60];
+        this.arr =  [10, 5, 20, 2, 4, 8];
+        this.size = this.arr.length;
+      this.capacity = 20;
+    }
 
 
     public left(i:number):number{
@@ -62,10 +62,7 @@ class MinHeap1{
 
       while(parentIndex >= 0 && this.arr[parentIndex] > this.arr[currIndex]){
         
-        let temp:number = this.arr[parentIndex];
-        this.arr[parentIndex] = this.arr[currIndex];
-        this.arr[currIndex] = temp;
-
+        [this.arr[parentIndex], this.arr[currIndex]] = [this.arr[currIndex], this.arr[parentIndex]]
         currIndex = parentIndex;
         parentIndex = this.parent(currIndex);
       }
@@ -92,10 +89,8 @@ class MinHeap1{
         }
   
         if(smallestIndex != currIndex){
-          let temp:number = this.arr[smallestIndex];
-          this.arr[smallestIndex] = this.arr[currIndex];
-          this.arr[currIndex] = temp;
-  
+
+          [this.arr[smallestIndex], this.arr[currIndex]] = [this.arr[currIndex] , this.arr[smallestIndex]];
           this.MinHeapify(smallestIndex);
         }
         
@@ -157,18 +152,77 @@ class MinHeap1{
     //  tempArr = []; // by this garbage collector of js will free up the space taken previously because I have removed the reference of the previous array and hence it will be deallocated from the memory
     }
 
+    public static printHeap(tempArr:Array<number>){
+ 
+      for(let i = 0;i<tempArr.length;i++){
+       tempArr.push(tempArr[i]);
+      }
+ 
+      console.log(tempArr);
+ 
+     //  tempArr = []; // by this garbage collector of js will free up the space taken previously because I have removed the reference of the previous array and hence it will be deallocated from the memory
+     }
 
-    public  buildHeap(rndmArr:Array<number>){
 
-      if(rndmArr.length <= 1){
+    public  buildHeap(){
+
+      if(this.size <= 1){
         return;
       }
+
+      // let tempArr:Array<number> = this.arr;
       
       let rightmost_bottomost_internal_node_index:number = this.parent(this.size-1); 
       for(let i = rightmost_bottomost_internal_node_index; i >= 0 ;i-- ){
         this.MinHeapify(i);
+      }      
+    } 
+
+
+    // Implementing Heap sort and necessary algorithms for that
+
+    public MaxHeapify(currIndex:number = 0){
+
+      if(currIndex >= this.size){
+        return;
+      }
+
+      let leftIndex:number = this.left(currIndex);
+      let rightIndex:number = this.right(currIndex);
+      let largestIndex:number = currIndex;
+
+      if(leftIndex < this.size && this.arr[leftIndex] > this.arr[largestIndex]){
+        largestIndex = leftIndex;
+      }
+
+      if(rightIndex < this.size && this.arr[rightIndex] > this.arr[largestIndex]){
+        largestIndex = rightIndex;
+      }
+
+      if(largestIndex != currIndex){
+
+        [this.arr[largestIndex], this.arr[currIndex]] = [this.arr[currIndex] , this.arr[largestIndex]];
+        this.MaxHeapify(largestIndex);
+      }
+      
+    }
+
+    public buildMaxHeap(){
+      let rightmost_bottomost_internal_node_index:number = this.parent(this.size-1);
+
+      for(let i = rightmost_bottomost_internal_node_index; i >= 0 ;i-- ){
+        this.MaxHeapify(i);
+      }   
+    }
+
+    public heapSort(){
+
+      for(let lastIndex = this.size-1; lastIndex >= 1; lastIndex--){
+        [this.arr[lastIndex], this.arr[0]] =  [this.arr[0], this.arr[lastIndex]];
+        this.MaxHeapify(0);
       }
     }
+
     }
   
   
@@ -176,29 +230,29 @@ class MinHeap1{
 
   let heap1:MinHeap1 = new MinHeap1(8);
 
-  heap1.insert(10);
-  heap1.insert(20);
-  heap1.insert(15);
-  heap1.insert(40);
-  heap1.insert(50);
-  heap1.insert(100);
-  heap1.insert(25);
-  heap1.insert(45);
-  heap1.insert(12);
+  // heap1.insert(10);
+  // heap1.insert(20);
+  // heap1.insert(15);
+  // heap1.insert(40);
+  // heap1.insert(50);
+  // heap1.insert(100);
+  // heap1.insert(25);
+  // heap1.insert(45);
+  // heap1.insert(12);
 
-  console.log(heap1.arr);
+  // console.log(heap1.arr);
 
-//   let arr:Array<number> = [40, 20, 30, 35,25,80, 32, 100, 70, 60];
+  let arr:Array<number> = [10, 5, 20, 2, 4, 8];
 
 //   let heap3:MinHeap1 = new MinHeap1();
 
-  console.log("before: ")
+  console.log("before: ");
 heap1.printHeap();
 //   heap3.MinHeapify();
 //   heap3.decreaseKey(4,1);
-  heap1.deleteKey(3);
-  console.log("after: ")
-
+  heap1.buildHeap();
+  console.log("after: ");
   heap1.printHeap();
+
 
 
