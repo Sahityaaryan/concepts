@@ -27,6 +27,48 @@ using namespace std;
 // }
 
 
+    string minWindow(string s, string t) {
+        
+        int lead = 0, lag = 0, min_window = 0;
+        string requiredString = "";
+
+        unordered_map<char, int> mp1;
+        unordered_map<char, int> mp2;
+
+        while(lead < t.length()){
+            mp1[t[lead++]]++;
+        }
+
+        lead = 0;
+
+        while(lead < s.length()){
+
+            if(mp1.find(s[lead]) != mp1.end()){
+                mp2[s[lead]]++;
+            }
+
+            while(mp2.size() == mp1.size()){
+
+                int window = lead-lag+1;
+                if(min_window > window){
+                    min_window = window;
+                    requiredString = s.substr(lag, min_window);
+                }
+
+                mp2[s[lag]]--;
+                if(mp2[s[lag]] == 0){
+                    mp2.erase(s[lag]);
+                    lag++;
+                }
+            }
+
+            lead++;
+        }
+
+        return requiredString;
+    }
+
+
 string minWindow(string s, string t) {
    unordered_map<char,int> map;
     for (auto c : t)
