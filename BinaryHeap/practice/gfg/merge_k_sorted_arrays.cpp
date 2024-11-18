@@ -39,7 +39,64 @@ vector<int> mergeKArrays(vector<vector<int>> arr, int K)
        
        
     }
+
+
+// using heap
+
+
+    class data{
+        public:
+        int val, apos, vpos;
+        data(int v, int ap, int vp){
+            val = v;
+            apos = ap;
+            vpos = vp;
+        }
+    };
+
+    struct mycomp{
+        bool operator()(data &d1, data &d2){
+            return d1.val > d2.val;
+        }
+    };
+
+    class Solution
+    {
+        public:
+
+        vector<int> mergeKArrays(vector<vector<int>> arr, int K)
+    {
+        priority_queue<data, vector<data>, mycomp> mh;
+        
+        vector<int> vec;
+        
+        int p = 0;
+        
+        while(p < K){
+            data d(arr[p][0], p,0);
+            mh.push(d);
+            p++;
+        }
+        
+        while(!mh.empty()){
+            data d1 = mh.top();
+            mh.pop();
+            vec.emplace_back(d1.val);
+            int ap = d1.apos, vp = d1.vpos;
+            
+            if(vp+1 < arr[ap].size()){
+                // data* newD = new data(arr[d1->pos][d1->pointer], d1->pos, d1->pointer);
+                data d(arr[ap][vp+1], ap, vp+1);
+                mh.push(d);
+            }
+        }
+        
+        return vec;
+        
+       
+    }
  
+
 int main(){
     
  cout << endl;
