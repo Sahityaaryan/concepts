@@ -18,7 +18,6 @@ vector<int> count_NGE(int n, vector<int> &arr, int q, vector<int> &in){
         }
     }
     return ans;
-    
 
  }
 
