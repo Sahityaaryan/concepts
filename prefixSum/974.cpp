@@ -47,12 +47,11 @@ expression to be divisible by k, R1 - R0 must also be divisible by k. This gives
 }
 
 int main(){
-    
+
     vector<int> nums = {4, 5, 0, -2, -3, 1};
     int k = 5;
 
     cout << "\n Ans: " << subarraysDivByK(nums, k) << endl;
-
     cout << endl;
     return 0;
 }
