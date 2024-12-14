@@ -7,10 +7,11 @@
 // and thus by increasing j we are checking out whether the element ahead can be a possible midpoint or not? and after we have checked the possible combinations of middle point and
 // the endpoint the outer list will again force us to find the combinations for varying midpoints and endpoints but this time with a different start point
 
+// code is below:->
+
 function countTriplets(nums: Array<number>, n: number, target: number) {
   nums.sort((a, b) => a - b);
 
-  // const n = nums.length;
   let ans = 0;
   for (let i = 0; i < n - 2; ++i) {
     let [j, k] = [i + 1, n - 1];
