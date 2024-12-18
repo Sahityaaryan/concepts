@@ -69,8 +69,17 @@ Eg: (int) (((long long)a * (long long)b) % (10e8 + 7))
 
 1. [Sieve of Eratosthenes](https://cp-algorithms.com/algebra/sieve-of-eratosthenes.html)
 
+# Greedy
+1. **Definition: ** Being greedy means always choosing the best possible case or thing for yourself in every situation
 
-# Patters for coding
+## Greedy procedures
+1.  Choose the best possible solution.
+2. If feasible, add it to the solution set
+3. If not, reject it and don't consider it again
+4. Keep repeating, till you reach the end
+
+
+# Patterns for coding
 
 1. Just see the video by Sahil gaba of 8 patterns
 
