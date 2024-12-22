@@ -10,3 +10,5 @@ yarn.lock
 package.json
 package-lock.json
 goal.md
+t.cpp
+t.exe
