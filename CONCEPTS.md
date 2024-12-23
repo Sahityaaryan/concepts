@@ -72,11 +72,12 @@ Eg: (int) (((long long)a * (long long)b) % (10e8 + 7))
 # Greedy
 1. **Definition: ** Being greedy means always choosing the best possible case or thing for yourself in every situation
 
-## Greedy procedures
-1.  Choose the best possible solution.
-2. If feasible, add it to the solution set
-3. If not, reject it and don't consider it again
-4. Keep repeating, till you reach the end
+## Procedures to solve Greedy Problems
+1. Observe the greedy factor (means what the situation is favouring which things is considered the best)
+2. Find out an algo that satisfies that greedy factor
+3. Run code
+4. Debug and improve
+5. Finally solution Accepted :-)
 
 
 # Patterns for coding

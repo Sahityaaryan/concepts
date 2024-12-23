@@ -28,7 +28,7 @@ function coinChange1(coins: number[], amount: number): number {
 // S.C : O(amount)
 //
 
-// *********************** Recursive approach
+// *********************** Recursive approach (Top - down)
 //
 //
 // In this given approach still we are doing the same thing we are filling the dp which

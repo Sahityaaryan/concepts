@@ -1,3 +1,6 @@
+// Learning here I got to learn that for this question I want to sort the array such has I will get the maximum value with minimum capacity so
+// for this i have to sort the array on the (value/capacity)
+
 function fractionalknapsack(
   val: Array<number>,
   wt: Array<number>,
