@@ -16,3 +16,7 @@
 ### Reivising things from [codestorywithMIK](https://www.youtube.com/watch?v=jpuDyt-ruFc&list=PLpIkg8OmuX-LkgtrEF7eyyYWJM3m5tVQY)
 
 1. [How to find the minimum in rotated sorted Array](https://leetcode.com/problems/find-minimum-in-rotated-sorted-array/submissions/1486540060/)
+2. 74 - Search in a 2-d matrix
+3. 33 - search in rotated sorted-1
+4. 81 - search in rotated sorted-2
+5. 1539 -  kth missing positive
