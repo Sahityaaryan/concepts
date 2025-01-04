@@ -55,7 +55,7 @@ vector<int> postOrder(Node* node) {
  // -----------------------------> Optimized solution<----------------
 
 
- // Mantra
+ // Mantra :-> root left right + revers
 
 
      vector<int> post;
