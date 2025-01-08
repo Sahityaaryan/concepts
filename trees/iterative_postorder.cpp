@@ -81,7 +81,7 @@ vector<int> postOrder(Node* node) {
      return post;
 
      // T.C : O(N + N/2)
-     // S.c:O(3) == O(1)
+     // S.c: O(N)
 
  }
 
