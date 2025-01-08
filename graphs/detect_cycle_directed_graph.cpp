@@ -18,6 +18,9 @@ using namespace std;
     if i found any visited node then i will simply check the stack which contains all the nodes i encountered while moving through 
     the path if found then return true (I have got the cycle) otherwise i will put all the elements back to the stack 
 
+
+    Problem with stack is that I have to run the loop twice if i didn't find any loop with the visited node and extra space as well
+
  */
 
 
