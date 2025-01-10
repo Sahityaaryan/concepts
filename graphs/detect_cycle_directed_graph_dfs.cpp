@@ -84,6 +84,49 @@ using namespace std;
 */
 
 
+
+// 2. This is that everywhere available approach but I optimized it space wise
+
+/*
+
+    bool dfs(vector<vector<int>>& adj, int v, vector<int>& visitCount){
+        
+        visitCount[v] = 2; // here I am giving it 2 because ((I am visiting this node) +
+        // (and this node is part of the path I am currently following))
+    
+        for(int x:adj[v]){
+            
+            if(visitCount[x]) {
+              if(visitCount[x] == 2) return true;
+              
+            } else if(dfs(adj, x, visitCount)) return true;
+        }
+        
+        visitCount[v] = 1; // (now it is 1 because it siginifies that I have only visited this node
+        // but it is not a part of the current path I am following)
+        return false;
+    }
+    
+    
+    bool isCyclic(int V, vector<vector<int>> adj) {
+        // code here
+        vector<int> visitCount(adj.size());
+        
+        for(int i = 0; i < adj.size(); i++){
+            if(!visitCount[i]){
+                if(dfs(adj, i, visitCount)){
+                    return true;
+                }
+            }
+        }
+        
+        return false;
+    }
+
+*/
+
+
+
 int main(){
     
  cout << endl;
