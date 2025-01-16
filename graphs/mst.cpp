@@ -51,7 +51,7 @@ using namespace std;
        
     }
 
-    // T.C : O(V*(V + V)) = O(V^2 + 2V)
+    // T.C : O(V*(V + V)) = O(V^2 + V^2)
     // S.C : O(2V)
 
 
