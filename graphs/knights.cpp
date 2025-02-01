@@ -15,7 +15,7 @@ using namespace std;
         already entered the a lot of combination so if just return the answer while entering the 
         position it will same me a lot of space and time
     */
-    public:
+
   	int minStepToReachTarget(vector<int>&kp,vector<int>&tp,int N)
 	{
 	   if(kp == tp) return 0;
