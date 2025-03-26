@@ -2,7 +2,8 @@
 using namespace std;
 
 /*
- link:-> https://leetcode.com/problems/kth-largest-element-in-an-array/description/
+ 
+link:-> https://leetcode.com/problems/kth-largest-element-in-an-array/description/
 
  This question is about finding the kth largest element using minheap.
 
@@ -12,24 +13,15 @@ using namespace std;
 
 class Solution {
     public:
-        int findKthLargest(vector<int>& nums, int k) {
-    
-            priority_queue<int> pq;
-    
-            for(int ele:nums){
-                pq.push(ele);
-            }
-    
-            int kthlargest;
-    
-            while(k){
-                kthlargest = pq.top();
-                pq.pop();
-                k--;
-            }
-    
-            return kthlargest;
+    int findKthLargest(vector<int>& nums, int k) {
+        priority_queue<int, vector<int>, greater<int>> minheap;
+
+        for(int ele:nums){
+            minheap.push(ele);
+            if(minheap.size() > k) minheap.pop();
         }
+        return minheap.top();
+    }
     };
 
 int main(){
