@@ -89,3 +89,19 @@ Eg: (int) (((long long)a * (long long)b) % (10e8 + 7))
 ### POTD solutions repo
 
 1. [POTD_GFG](https://github.com/getlost01/gfg-potd)
+
+# Tools
+
+1. **Memset** : C++ memset() is a function that copies a single character for a specified number of times to the given bytes of memory. It is useful for filling a number of bytes with a given value starting from a specific memory location.
+
+```
+#include <bits/stdc++.h>
+using namespace std;
+
+int main() {
+    char str[5];
+    memset(str, 't', sizeof(str));
+    cout << str;
+    return 0;
+}
+```
