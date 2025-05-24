@@ -3,6 +3,8 @@ using namespace std;
 
 
 /*
+
+    link:-> https://www.geeksforgeeks.org/problems/subset-sum-problem-1611555638/1
     my problem -> I wasn't able to undersand how to do this question using the bottom-up approach
     solution -> Always in the bottom-up approach remember that you have to built a vector such that each value of it at a particular place, gives the answer if that particular value  would be given as the final destination
 
