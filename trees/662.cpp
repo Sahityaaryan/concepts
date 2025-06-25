@@ -43,7 +43,7 @@ typedef TreeNode tn;
 
 
             while(n--){
-                unsigned int i = q.front().second-firstInd;
+                unsigned int i = q.front().second-firstInd; // it is literally generating the index from 0 to whatever it can go
                 root = q.front().first;
                 lastInd = i;
                 q.pop();
@@ -61,7 +61,6 @@ typedef TreeNode tn;
         return width;
         
     }
-
 
 int main(){
     

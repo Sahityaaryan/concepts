@@ -4,10 +4,10 @@ using namespace std;
 
 //* Sir's apprach
 
-    // here i have implemented two pointer approach 
+    // here i have implemented two pointer approach
 
-    // 1. we will check if at any side the height is less than the opposite side then before storing the water we will check whether the max of that side is greater than
-    // the height if yes then we can store water of area (max - height) otherwise we can't and we have to move further
+    // 1. we will check if at any side the height is less than the opposite side then before storing the water we will check whether the max of that side
+    // is greater than the height if yes then we can store water of area (max - height) otherwise we can't and we have to move further
 
     // 2. If we find any equal elements then it depends on us which side we choose to move (can be left or can be right)
 
@@ -52,7 +52,7 @@ using namespace std;
 
             if (height[l] != height[r]) {
                 if (height[l] < height[r]) { // this condition is to check whether it can store the water or not
-                    if (l_max > height[l]) { 
+                    if (l_max > height[l]) {
                         area += (l_max - height[l]);
                         // cout <<"\narea: " << area ;
                     } else {
@@ -87,7 +87,7 @@ int main()
     vector<int> h = {1,0,2,0,2,5,0,5};
 
     cout << "\nAns: " << maximumTrappedWater(h);
-  
+
   cout << endl;
   return 0;
 }

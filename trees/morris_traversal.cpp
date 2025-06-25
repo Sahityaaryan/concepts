@@ -3,6 +3,13 @@ using namespace std;
  
 
 /*
+
+    Morris Traversal
+
+    
+    Learning : when you are using morris traversal just you have to see the traversal pattern and then decide 
+    which nodes you have to connect and with whom and then simply apply it.
+
     This is based on two conditions
 
     1. if(root->left == nullptr) then 
@@ -22,6 +29,17 @@ using namespace std;
             -> create one thread
             -> and move to the left s
 */
+
+
+struct TreeNode {
+    int val;
+    TreeNode* left;
+    TreeNode* right;
+    TreeNode() : val(0), left(nullptr), right(nullptr) {}
+    TreeNode(int x) : val(x), left(nullptr), right(nullptr) {}
+    TreeNode(int x, TreeNode *left, TreeNode *right) : val(x), left(left), right(right) {}
+};
+
 
     tn* rightMost(tn* root){
         while(root->right){
@@ -71,6 +89,46 @@ using namespace std;
 
 
         return inorder;
+    }
+
+
+
+
+/*
+        Morris Traversal (Preorder)
+
+    
+*/
+    TreeNode* rightMost(TreeNode* root){
+        if(!root) return nullptr;
+
+        while(root->right || root->left){
+            if(root->right)root = root->right;
+            else if(root->left)root = root->left;
+        }
+        return root;
+    }
+
+    vector<int> preorderTraversal(TreeNode* root) {
+        if(!root) return {};
+        vector<int>pre;
+        unordered_map<TreeNode*, TreeNode*> thread;
+
+        while(true){
+            if(root->right){
+                if(root->left){
+                TreeNode* node = rightMost(root->left);
+                thread[node] = root->right;
+                }
+            }
+            pre.push_back(root->val);
+
+            if(root->left) root = root->left;
+            else if(root->right) root = root->right;
+            else if(thread[root]) root = thread[root];
+            else break;
+        }
+        return pre;
     }
 
 int main(){

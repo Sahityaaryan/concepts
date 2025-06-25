@@ -43,6 +43,7 @@ while(!st.empty()){
         post.push_back(root->val);
         st.pop();
     }
+    
 }
 
 for(int ele:pre){

@@ -1,9 +1,11 @@
 #include<bits/stdc++.h>
 using namespace std;
  
+
+
+
+
 /*
-
-
     1. using the loop approach
 
   int spanningTree(int V, vector<vector<int>> adj[]) {
@@ -37,7 +39,7 @@ using namespace std;
         
         mst[min_key] = true;
            
-        //   finding adjacent nodes
+        //   finding adjacent nodes and updating the key vector 
         
             for(auto nodes:adj[min_key]){
                 int v = nodes[0];
@@ -108,8 +110,6 @@ using namespace std;
        
     //   T.C : O(V*(V + logV)) = O(V^2 + V*logV)
     // S.C : O(2V)
-
-
 
     */
 

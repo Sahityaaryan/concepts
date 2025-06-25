@@ -7,7 +7,7 @@ using namespace std;
 
 //##########  New things learnt ###############//
 
-//* jumping window
+//* jumping window 
 
 
 //* The ‘fill’ function assigns the value ‘val’ to all the elements in the range [begin, end), 
@@ -42,10 +42,7 @@ int lengthOfLongestSubstring(string s)
         {
             lagger = charIndex[(int)s[leader]] + 1; 
         }
-
-        // cout << "lead: " << leader << "lagger: " << lagger << endl;
-
-
+        
         // storing the index of the each character into the charIndex
         charIndex[(int)s[leader]] = leader;
 

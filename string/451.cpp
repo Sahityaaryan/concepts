@@ -23,7 +23,7 @@ void test2(){
         return true;
     };
 
-    cout << "test2: " << typeid(decltype(cmp)).name() << endl; 
+    cout << "test2: " << typeid(decltype(cmp)).name() << endl;
 
     // priority_queue<int, vector<int>, true>pq(true);
 }
@@ -44,7 +44,7 @@ void test2(){
         }
 
         sort(v.begin(), v.end(), cmp); // n*log(n)
- 
+
         for(auto it:v){ // 75
             i = 0;
 
@@ -52,7 +52,7 @@ void test2(){
                 ans += it.first;
                 i++;
             }
-            
+
         }
 
         return ans;
@@ -60,7 +60,7 @@ void test2(){
         // T.C : O(n + nlog(n)) = O(nlogn)
         // S.C : O(1)
     }
-    
+
 void test(){
     priority_queue<int , vector<int> , greater<int>> pq; // min heap
 
@@ -96,7 +96,7 @@ void test(){
     // all the variables of the enclosing function are captured
 
     auto lamda3 = [=](){
-        cout << num << ' ' << num1 << ' ' << num3 << ' ' << hail << endl; 
+        cout << num << ' ' << num1 << ' ' << num3 << ' ' << hail << endl;
     };
 
     int num44 = 7;
@@ -128,7 +128,7 @@ void test(){
 int main()
 {
  test2();
-    
+
     cout << endl;
     return 0;
 }
