@@ -97,3 +97,10 @@ int main(){
 
     return 0;
 }
+
+
+// -> of similar kind -> 915 2957 1248 -- (all completed)
+// and from this I can say that understanding the pattern of solving the question is more important because
+// the computer is a very dumb machine it needs to follow a regular pattern to do anything it can't think
+// and changes it ways like us.
+//
