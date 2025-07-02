@@ -5,6 +5,10 @@ using namespace std;
 /**
  *          Problem :-> 115 (leetcode), https://leetcode.com/problems/distinct-subsequences/
  *
+ *      how to think in bottom up dp
+ *      1. you must remember bottom up dp and starts when your normal dp hits the basecase or it's starts from there where answer is confirmed
+ *      2. then it moves ahead and tries to make a recurrence relation which will help achieving the final goal, like how this base case answer will contribute
+ *         in the current state
  *
  *
  */
