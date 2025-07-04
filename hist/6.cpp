@@ -40,3 +40,7 @@ int main(){
 
     return 0;
 }
+
+
+
+// 1664 (done), 1878 (done), 3490 ()
