@@ -37,7 +37,7 @@ using namespace std;
   public:
       int lengthOfLIS(vector<int>& nums) {
           int n = nums.size();
-
+// here in this dp actually I am storing how many elements are there on the right side of the ith element strictly greater than it.
           int count = 0;
 
           vector<int>dp(n,1);
