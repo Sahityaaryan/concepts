@@ -3,6 +3,10 @@ using namespace std;
 
 /**
  * Leetcode 410
+ *
+ * challenge :-> https://leetcode.com/problems/find-minimum-time-to-finish-all-jobs/description/ (1723)
+ * challenge :-> https://leetcode.com/problems/partition-to-k-equal-sum-subsets/description/ (698)
+ *
  */
 
 class Solution {

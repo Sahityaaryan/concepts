@@ -1,5 +1,20 @@
 #include<bits/stdc++.h>
-typedef long long ll;
+#define pb push_back
+#define vi vector<int>
+#define vvi vector<vector<int>>
+#define vvvi vector<vector<vector<int>>>
+#define pii pair<int, int>
+#define all(x) x.begin(), x.end()
+#define sz(x) (int)x.size()
+#define ll long long
+#define F first
+#define S second
+#define ln(s) (int)s.length()
+#define umci unordered_map<char, int>
+#define umii unordered_map<int, int>
+#define umsi unordered_map<string, int>
+
+
 using namespace std;
 
 
@@ -14,14 +29,23 @@ using namespace std;
 
 int dp[20][3][73];
 
+// sieve of erastothenes (sieve till roots)
+
 bool isPrime(int n){
     if(n < 2) return 0;
     if(n == 2 || n == 3) return 1;
+    vector<bool> is_prime(n+1,1);
+    is_prime[0] = is_prime[1] = 0;
 
-    for(int i = 2; i <= sqrt(n); ++i){
-        if(n % i == 0) return 0;
+    for(int i = 2; i <= n; ++i){
+        if(is_prime[i]){
+            for(int j = i*i; j <= n; j+=i){
+                is_prime[j] = 0;
+                if(!is_prime[n]) return false;
+            }
+        }
     }
-    return 1;
+    return true;
 }
 
 int sol(int idx, bool tight, int sum, string& str){

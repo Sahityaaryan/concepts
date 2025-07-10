@@ -6,9 +6,10 @@ using namespace std;
 
 
 
-// Need of again explainations :- 
+// Need of again explainations :-
 
-// sieve till roots :- 1. precomputation (creation of an array which will tell whether the number is prime or not in O(1) time complexity) 2.Then simple iteration to check whether a given number is prime or not using precomputed array which we have created
+// sieve till roots :- 1. precomputation (creation of an array which will tell whether the number is prime or not in O(1) time complexity)
+//  2.Then simple iteration to check whether a given number is prime or not using precomputed array which we have created
 
 int countPrime(int n){
 
@@ -58,7 +59,7 @@ int countPrime(int n){
         // counter = n-1;
 
         for(int i = 2; i<= sqrt(n); i++){
-            
+
             if(primes[i]){
                 for(int j = i*i; j <= n; j+=i){
                     // if(primes[j]) counter--;
@@ -89,7 +90,7 @@ int countPrime(int n){
     //     int cnt=0;
     //     vector<bool>prime(n+1,true);
     //     prime[0]=prime[1]=false;
-    
+
     //     for(int i=2;i<n;i++){
     //          if (prime[i]){
     //             cnt++;
@@ -103,8 +104,8 @@ int countPrime(int n){
 
 int main()
 {
- 
-    
+
+
     cout << endl;
     return 0;
 }
