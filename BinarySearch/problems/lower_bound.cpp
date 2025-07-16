@@ -2,7 +2,7 @@
 using namespace std;
 
 
-// Lower bound = maximum element less than the target
+// Lower bound = position of maximum element less than the target if the target is not found, otherwise return the position of the target
 
     int LBs(vector<int> &nums,int t,int lo, int hi){
 
