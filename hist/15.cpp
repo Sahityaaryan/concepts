@@ -19,6 +19,9 @@ using namespace std;
 #define sst stringstream
 
 /*
+ *
+ * leetcode (1723) :-> https://leetcode.com/problems/find-minimum-time-to-finish-all-jobs/
+ *
     I had my apporach but still this approach works why?
     because, this approach is efficient like I have totally cutdown the
     need of the assigning lot of time to a worker while anyother worker
