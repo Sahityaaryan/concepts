@@ -3,7 +3,7 @@ using namespace std;
 
 /*
  * 3599 :-> https://leetcode.com/problems/partition-array-to-minimize-xor/description/
- *
+ * challenge :-> 2977, 932
  *
  */
 

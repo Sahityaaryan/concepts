@@ -24,7 +24,6 @@ int sol(int pos, bool tight, int curr, string& num, vector<vector<vector<int>>>&
     }
 
     return dp[pos][tight][curr] = no_of_1_digit_in_number;
-
 }
 
 int countDigitOne(int n) {

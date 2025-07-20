@@ -12,11 +12,6 @@ using namespace std;
 #define F first
 #define S second
 
-
-
-
-
-
 /**
  *
  * 3490 (leetcode) :-> https://leetcode.com/problems/count-beautiful-numbers/

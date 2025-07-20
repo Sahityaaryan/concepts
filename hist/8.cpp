@@ -10,7 +10,8 @@ using namespace std;
  */
 
  /**
-  * Optimized
+  * Optimized :-> but there is a problem it can only give you correct length of the longest increasing subsequence but it can't give
+  * you the correct longest increasing subsequence  because it may change the order of digits
   *
   * class Solution {
   public:

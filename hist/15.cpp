@@ -21,6 +21,7 @@ using namespace std;
 /*
  *
  * leetcode (1723) :-> https://leetcode.com/problems/find-minimum-time-to-finish-all-jobs/
+ * challenge -> 698 (done)
  *
     I had my apporach but still this approach works why?
     because, this approach is efficient like I have totally cutdown the
