@@ -17,10 +17,13 @@
 
 Eg: (int) (((long long)a * (long long)b) % (10e8 + 7))
 
+# String
+1. **(string) find**: In C++, string find() is a built-in library function used to find the first occurrence of a substring in the given string, and if
+it's not found then it returns a number a larger than the length of the string on which we are searching.
 
 # Bit Manipulation
 
-1. *what is lowerBound* => a number `ahead of` the maximum element which is `less than` the number whose lowerbound we are finding
+1. *what is lowerBound* => a number `ahead of` the maximum element which is `less than` the number whose lowerbound we are finding, (it's for finding the right position of inserting an element in a sorted array)
     *what is upperBound* => a number `before` the minimum element which is `greater than` the number whose upperbound we are finding
 
 2. *Ceil* => Ceil of x is the smallest element which is ` greater than or equal to x`. Ceil of x doesn’t exist if x is greater than greatest element of arr[].
@@ -85,6 +88,8 @@ Eg: (int) (((long long)a * (long long)b) % (10e8 + 7))
 1. Just see the video by Sahil gaba of 8 patterns
 
 2.
+
+
 
 ### POTD solutions repo
 
