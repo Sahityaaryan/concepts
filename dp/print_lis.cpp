@@ -18,7 +18,6 @@ using namespace std;
 #define umsi unordered_map<string, int>
 #define sst stringstream
 
-
 class Solution {
   public:
     vector<int> getLIS(vector<int>& arr) {
