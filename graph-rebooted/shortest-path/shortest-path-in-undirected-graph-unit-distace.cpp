@@ -23,6 +23,8 @@ using namespace std;
     shortest path in undirected-graph :-> https://www.geeksforgeeks.org/problems/shortest-path-in-undirected-graph-having-unit-distance/1
 
 
+    NOTE:-> Same concept is applicable for even DAG
+
 
  */
 
