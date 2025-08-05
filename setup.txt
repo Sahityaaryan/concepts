@@ -15,6 +15,7 @@
 #define umii unordered_map<int, int>
 #define umsi unordered_map<string, int>
 #define sst stringstream
+#define vb vector<bool>
 #define ima INT_MAX
 #define imi INT_MIN
 
