@@ -32,7 +32,7 @@ class Solution {
   public:
     // Function to find the shortest path from source to all other nodes
     vector<int> shortestPath(vector<vector<int>>& adj, int src) {
-        // code here
+        
         int V = sz(adj);
 
         vi dist(V, -1); // will store the shortest distance from the src (here -1 means there is no any path from src node to ith node)
@@ -46,8 +46,9 @@ class Solution {
             int dist_u = dist[u];
 
             for(int v:adj[u]){
-                if((dist[v] > dist_u+1) || dist[v] == -1){
-                    dist[v] = dist_u+1;
+                int cost = 1;
+                if((dist[v] > dist_u+cost) || dist[v] == -1){
+                    dist[v] = dist_u+cost;
                     q.push(v);
                 }
             }
