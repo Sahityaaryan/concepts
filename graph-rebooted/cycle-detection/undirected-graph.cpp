@@ -48,15 +48,14 @@ using namespace std;
      private:
          bool dfs(int u, vvi& adj, vi& isv, int parent){
              isv[u]=1;
-             bool has_cycle = false;
-
+             
              for(int v:adj[u]){
                  if(!isv[v]){
-                     has_cycle = has_cycle || dfs(v,adj,isv,u);
+                    if(dfs(v,adj,isv,u)) return 1;
                  } else if(v != parent) return true;
              }
 
-             return has_cycle;
+             return 0;
          }
  };
 
