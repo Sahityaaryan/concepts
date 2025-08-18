@@ -18,7 +18,6 @@ class DisjointSet{
         }
         int findParent(int node){
             if(node == parent[node]) return node;
-
             return parent[node] = findParent(parent[node]);
         }
 
@@ -46,12 +45,12 @@ class DisjointSet{
             int sizeu = size[u];
             int sizev = size[v];
 
-            if(sizeu > sizev){
-                parent[pv] = pu;
+            if(sizeu >= sizev){
                 size[pu] += size[pv]; 
+                parent[pv] = pu;
             } else {
-                parent[pu] = pv;
                 size[pv] += size[pu];
+                parent[pu] = pv;
             }
         }
 };
