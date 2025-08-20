@@ -25,6 +25,8 @@ class DisjointSet{
             int pu = parent[u];
             int pv = parent[v];
 
+            if(pu == pv) return; // must case to see when they are already united
+
             int ranku = rank[pu];
             int rankv = rank[pv];
 
@@ -41,6 +43,8 @@ class DisjointSet{
         void unionBySize(int u, int v){
             int pu = parent[u];
             int pv = parent[v];
+
+            if(pu == pv) return; // must case to see when they are already united
 
             int sizeu = size[u];
             int sizev = size[v];
