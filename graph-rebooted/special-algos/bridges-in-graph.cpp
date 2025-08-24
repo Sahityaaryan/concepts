@@ -2,6 +2,11 @@
 #include<bits/stdc++.h>
 using namespace std;
 
+/**
+ * 
+ * check the dsa copy for the graphs and notes or can also check this : https://www.youtube.com/watch?v=qrAub5z8FeA
+ */
+
 class Solution {
 public:
     vector<vector<int>> criticalConnections(int n, vector<vector<int>>& connections) {
