@@ -46,7 +46,7 @@ public:
                 // the next node got to have a bigger tin time but
                 // if they are connected then the low[next node] will
                 // either be small or equal to the tin[node] but since
-                //it is not then they are not a part of a cycle and  can't
+                // it is not then they are not a part of a cycle and  can't
                 // be reached if disconnected
                 if(low[it] > tin[node]) bridges.push_back({it, node});
             } else {
