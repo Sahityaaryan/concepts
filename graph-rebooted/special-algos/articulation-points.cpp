@@ -23,7 +23,7 @@ using namespace std;
 #define vb vector<bool>
 #define ima INT_MAX
 #define imi INT_MIN
-
+    
 /*
 
     question :-> https://www.geeksforgeeks.org/problems/articulation-point-1/1

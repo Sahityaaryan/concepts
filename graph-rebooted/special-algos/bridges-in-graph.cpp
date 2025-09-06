@@ -7,18 +7,28 @@ using namespace std;
  * check the dsa copy for the graphs and notes or can also check this : https://www.youtube.com/watch?v=qrAub5z8FeA
  */
 
+
+ 
 class Solution {
 public:
     vector<vector<int>> criticalConnections(int n, vector<vector<int>>& connections) {
-        vector<int> adj[n];
+       vector<int> adj[n];
+
+        memset(adj, {}, n*sizeof(vector<int>));
+
         for(auto it: connections){
             adj[it[0]].push_back(it[1]);
             adj[it[1]].push_back(it[0]);
         }
 
-        vector<bool> vis(n, 0);
+        bool vis[n];
+        memset(vis, 0, n);
+
         int tin[n];
+        memset(tin, -1, n);
         int low[n];
+        memset(low, -1, n);
+
         vector<vector<int>> bridges;
 
         dfs(0,-1,vis, adj, tin, low, bridges);
@@ -28,29 +38,23 @@ public:
     }
 
     private:
-    int timer = 0;
+    int timer = 1;
     
-    void dfs(int node, int parent, vector<bool>& vis, vector<int> adj[], int tin[], int low[], vector<vector<int>>& bridges){
-        vis[node]=1;
-        tin[node]=low[node]=timer;
+    void dfs(int node, int parent, bool vis[], vector<int> adj[], int tin[], int low[], vector<vector<int>>& bridges){
+        vis[node] = 1;
+        low[node] = tin[node] = timer;
         timer++;
 
-        for(auto it:adj[node]){
-            if(it == parent) continue;
-            if(!vis[it]) {
-                dfs(it, node, vis, adj, tin, low, bridges);
-                low[node] = min(low[node], low[it]);
+        for(int v:adj[node]){
+            if(parent == v) continue;
+            if(!vis[v]){
+                dfs(v, node, vis, adj, tin, low, bridges);
+                low[node]= min(low[v], low[node]);
 
-                // check whether node---it is a bridge or not
-                // oh now I got it, it's check to the it (next node)
-                // the next node got to have a bigger tin time but
-                // if they are connected then the low[next node] will
-                // either be small or equal to the tin[node] but since
-                // it is not then they are not a part of a cycle and  can't
-                // be reached if disconnected
-                if(low[it] > tin[node]) bridges.push_back({it, node});
+
+                if(tin[node] < low[v]) bridges.push_back({v,node});
             } else {
-                low[node] = min(low[node], low[it]);
+                low[node] = min(low[v], low[node]);
             }
         }
     }
